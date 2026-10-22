@@ -589,7 +589,7 @@
       position: fixed;
       left: 50%;
       bottom: 24px;
-      z-index: 100;
+      z-index: 300;
       max-width: calc(100vw - 32px);
       padding: 12px 16px;
       background: var(--card-2);
@@ -761,6 +761,79 @@
     .ico-yahoo   { background: #6001d2; }
     .ico-app     { background: var(--card-2); border: 1px solid var(--border); color: var(--accent) !important; }
     .ico-copy    { background: var(--card-2); border: 1px solid var(--border); color: var(--accent) !important; }
+
+    /* ───────── Feedback ───────── */
+    .fb-fab {
+      position: fixed;
+      right: 20px; bottom: 20px;
+      z-index: 90;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(17,17,17,.85);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,.8);
+      transition: color .2s, border-color .2s, transform .2s var(--ease);
+    }
+    .fb-fab:hover { color: var(--text); border-color: var(--accent-line); transform: translateY(-2px); }
+    .fb-box { max-width: 480px; padding: 24px; }
+    .fb-box h3 { padding-right: 36px; }
+    .fb-rate { display: flex; gap: 8px; margin: 4px 0 16px; }
+    .fb-rate button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--bg-2);
+      font-size: 14px;
+      color: var(--muted);
+      transition: border-color .2s, background .2s, color .2s;
+    }
+    .fb-rate button:hover { color: var(--text); background: var(--card-2); }
+    .fb-rate button[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); background: var(--accent-soft); }
+    .fb-field {
+      display: block;
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg-2);
+      color: var(--text);
+      font: inherit;
+      font-size: 15px;
+      line-height: 1.5;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .fb-field::placeholder { color: var(--dim); }
+    .fb-field:focus { outline: none; border-color: var(--accent-line); box-shadow: 0 0 0 3px var(--accent-soft); }
+    textarea.fb-field { min-height: 128px; resize: vertical; }
+    .fb-label { display: block; margin: 14px 0 6px; font-size: 13px; color: var(--dim); }
+    .fb-note { margin: 12px 0 0; font-size: 12.5px; color: var(--dim); }
+    .fb-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px; }
+    .fb-btn {
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: background .2s, opacity .2s, border-color .2s;
+    }
+    .fb-cancel { border: 1px solid var(--border); color: var(--muted); }
+    .fb-cancel:hover { background: var(--card-2); color: var(--text); }
+    .fb-submit { background: var(--accent); color: var(--on-accent); }
+    .fb-submit:hover:not(:disabled) { background: var(--accent-hover); }
+    .fb-submit:disabled { opacity: .45; cursor: not-allowed; }
+    .fb-hp { position: absolute; top: 0; left: 0; width: 1px; height: 1px; padding: 0; border: 0; opacity: 0; overflow: hidden; pointer-events: none; }
+    .fb-box, .fb-field { color-scheme: dark; }
+    @media (max-width: 520px) { .fb-fab { right: 16px; bottom: 16px; } }
   </style>
 </head>
 
@@ -1252,6 +1325,7 @@
       <div class="footer-links">
         <a href="#" class="js-home">Home</a>
         <a href="#tip" class="js-tip">Tip</a>
+        <a href="#feedback" class="js-feedback">Feedback</a>
         <a href="#x">Synapse X</a>
         <a href="#y">Synapse Y</a>
         <a href="#vpn">SynapseVPN</a>
@@ -1290,6 +1364,39 @@
         </button>
       </div>
     </div>
+  </div>
+
+  <!-- Feedback: floating button + dialog. Sends straight to support@zynaps.site -->
+  <button class="fb-fab js-feedback" type="button" aria-haspopup="dialog">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    Feedback
+  </button>
+  <div class="contact-backdrop" id="feedback" aria-hidden="true">
+    <form class="contact-box fb-box" id="fb-form" role="dialog" aria-modal="true" aria-labelledby="fb-title" novalidate>
+      <button class="contact-close" type="button" data-close aria-label="Close">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+      <h3 id="fb-title">Send feedback</h3>
+      <div class="fb-rate" role="group" aria-label="How's your experience?">
+        <button type="button" data-rate="Good" aria-pressed="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.4 8A2 2 0 0 1 18.4 22H7V10l4-8a3 3 0 0 1 4 3.9z"/></svg>
+          Good
+        </button>
+        <button type="button" data-rate="Bad" aria-pressed="false">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 14V2M9 18.1 10 14H4.2a2 2 0 0 1-2-2.3l1.4-8A2 2 0 0 1 5.6 2H17v12l-4 8a3 3 0 0 1-4-3.9z"/></svg>
+          Bad
+        </button>
+      </div>
+      <textarea class="fb-field" id="fb-msg" name="message" placeholder="What do you like, or what could be better? Bugs, ideas, anything." maxlength="4000" aria-label="Your feedback"></textarea>
+      <label class="fb-label" for="fb-email">Email (optional — only if you'd like a reply)</label>
+      <input class="fb-field" id="fb-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
+      <input class="fb-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <p class="fb-note">Your feedback goes straight to the zynaps.site team.</p>
+      <div class="fb-actions">
+        <button class="fb-btn fb-cancel" type="button" data-close>Cancel</button>
+        <button class="fb-btn fb-submit" type="submit" disabled>Submit</button>
+      </div>
+    </form>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1472,6 +1579,96 @@
         t.remove();
         done();
       }
+
+      // ───── Feedback ─────
+      // GitHub Pages has no server, so FormSubmit (formsubmit.co) emails each
+      // submission to SUPPORT. The very first submission sends an "Activate form"
+      // email to SUPPORT — click it once, and every submission after that arrives.
+      const feedback = document.getElementById('feedback');
+      const fbForm = document.getElementById('fb-form');
+      const fbMsg = document.getElementById('fb-msg');
+      const fbEmail = document.getElementById('fb-email');
+      const fbSubmit = fbForm.querySelector('.fb-submit');
+      const fbRates = fbForm.querySelectorAll('[data-rate]');
+      let fbRate = '';
+      let fbLastFocus = null;
+
+      function fbUpdate() { fbSubmit.disabled = !fbMsg.value.trim() && !fbRate; }
+      function openFeedback() {
+        fbLastFocus = document.activeElement;
+        feedback.classList.add('open');
+        feedback.setAttribute('aria-hidden', 'false');
+        setTimeout(() => fbMsg.focus(), 50);
+      }
+      function closeFeedback() {
+        feedback.classList.remove('open');
+        feedback.setAttribute('aria-hidden', 'true');
+        if (fbLastFocus) fbLastFocus.focus();
+      }
+      function resetFeedback() {
+        fbForm.reset();
+        fbRate = '';
+        fbRates.forEach(b => b.setAttribute('aria-pressed', 'false'));
+        fbSubmit.textContent = 'Submit';
+        fbUpdate();
+      }
+
+      document.querySelectorAll('.js-feedback').forEach(el =>
+        el.addEventListener('click', e => { e.preventDefault(); openFeedback(); })
+      );
+      feedback.addEventListener('click', e => {
+        if (e.target === feedback || e.target.closest('[data-close]')) closeFeedback();
+      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && feedback.classList.contains('open')) closeFeedback(); });
+      fbRates.forEach(b => b.addEventListener('click', () => {
+        const on = b.getAttribute('aria-pressed') !== 'true';
+        fbRates.forEach(o => o.setAttribute('aria-pressed', 'false'));
+        b.setAttribute('aria-pressed', String(on));
+        fbRate = on ? b.dataset.rate : '';
+        fbUpdate();
+      }));
+      fbMsg.addEventListener('input', fbUpdate);
+
+      fbForm.addEventListener('submit', e => {
+        e.preventDefault();
+        if (fbSubmit.disabled) return;
+        if (fbForm._honey.value) { closeFeedback(); resetFeedback(); return; } // bot
+        const email = fbEmail.value.trim();
+        if (email && !fbEmail.checkValidity()) { showToast('That email address doesn’t look right.'); fbEmail.focus(); return; }
+
+        const app = APPS[current];
+        const data = {
+          _subject: 'New feedback' + (fbRate ? ' (' + fbRate + ')' : '') + ' — zynaps.site',
+          _template: 'table',
+          _captcha: 'false',
+          Rating: fbRate || '—',
+          Feedback: fbMsg.value.trim() || '—',
+          Page: app ? app.name : 'Home',
+          Browser: navigator.userAgent
+        };
+        if (email) { data.Email = email; data._replyto = email; }
+
+        fbSubmit.disabled = true;
+        fbSubmit.textContent = 'Sending…';
+        fetch('https://formsubmit.co/ajax/' + SUPPORT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        })
+          .then(r => r.json().catch(() => ({})).then(j => {
+            if (!r.ok || String(j.success) === 'false') throw new Error(j.message || 'failed');
+          }))
+          .then(() => {
+            closeFeedback();
+            resetFeedback();
+            showToast('Thanks — your feedback was sent!');
+          })
+          .catch(() => {
+            fbSubmit.textContent = 'Submit';
+            fbUpdate();
+            showToast('Couldn’t send feedback. Please try again in a moment.');
+          });
+      });
 
       // Toast messages
       const toast = document.getElementById('toast');
