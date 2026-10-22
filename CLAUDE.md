@@ -25,4 +25,4 @@ Download hub for three apps: **Synapse X**, **Synapse Y** and **SynapseVPN**.
 Styled after dbvault.app: near-black background, Inter font, flat accent buttons, terminal-style cards, uppercase eyebrows, feature group cards.
 
 ## Work in progress
-- Branch `tip-section`: a tip card + header/footer "Tip" links using a Stripe Payment Link. Set `TIP_URL` in the script once the Stripe link exists, then merge into `main`.
+- Tip section (tip card + header/footer "Tip" links) is live on `main`, but `TIP_URL` in the script is still empty, so Tip buttons show a "coming soon" toast. Paste the Stripe Payment Link into `TIP_URL` once it exists. Stripe can redirect to `https://zynaps.site/#thanks` after a tip.
