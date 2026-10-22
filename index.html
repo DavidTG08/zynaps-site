@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>zynaps.site — Downloads</title>
+  <meta name="description" content="Download Synapse X, Synapse Y and SynapseVPN." />
+  <link rel="icon" href="Gemini_Generated_Image_wgi2nnwgi2nnwgi2-Photoroom.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a0a0a;
+      --bg-2: #0f0f0f;
+      --card: #111111;
+      --card-2: #161616;
+      --border: #262626;
+      --border-soft: #1c1c1c;
+      --silver: #c4c9d1;        /* one silver for all text site-wide */
+      --text: var(--silver);
+      --muted: #a3a3a3;
+      --dim: #737373;
+
+      /* Accent changes per app — see body[data-app] below */
+      --accent: #f97316;
+      --accent-2: #fb923c;
+      --accent-hover: #ea580c;
+      --accent-soft: rgba(249, 115, 22, 0.12);
+      --accent-line: rgba(249, 115, 22, 0.35);
+      --glow: rgba(249, 115, 22, 0.45);
+      --on-accent: var(--silver); /* text color on colored buttons */
+
+      --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Main / Home — one soft silver used for every accent */
+    body[data-app="home"] {
+      --accent: var(--silver); --accent-2: var(--silver); --accent-hover: var(--silver);
+      --accent-soft: rgba(196,201,209,.07); --accent-line: rgba(196,201,209,.26); --glow: rgba(196,201,209,.16);
+      --on-accent: #0b0c0e;
+    }
+    body[data-app="home"] .btn-primary:hover { filter: brightness(1.06); }
+    /* Synapse X — Orange */
+    body[data-app="x"] {
+      --accent: #f97316; --accent-2: #fbbf24; --accent-hover: #ea580c;
+      --accent-soft: rgba(249,115,22,.12); --accent-line: rgba(249,115,22,.35); --glow: rgba(249,115,22,.45);
+    }
+    /* Synapse Y — Purple */
+    body[data-app="y"] {
+      --accent: #a855f7; --accent-2: #d946ef; --accent-hover: #9333ea;
+      --accent-soft: rgba(168,85,247,.13); --accent-line: rgba(168,85,247,.38); --glow: rgba(168,85,247,.45);
+    }
+    /* SynapseVPN — Blue */
+    body[data-app="vpn"] {
+      --accent: #3b82f6; --accent-2: #22d3ee; --accent-hover: #2563eb;
+      --accent-soft: rgba(59,130,246,.13); --accent-line: rgba(59,130,246,.38); --glow: rgba(59,130,246,.45);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+    svg { flex-shrink: 0; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+    /* ───────── Header ───────── */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10, 10, 10, 0.65);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-soft);
+    }
+    .header .container {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+    /* Logo with a multi-color glow taken from its own colors */
+    .logo-wrap {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+    }
+    .logo-wrap::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: 50%;
+      background: conic-gradient(from 200deg, #ef2b3a, #f7931e, #4ccd3a, #1e8fff, #8b2ee6, #d81b8c, #ef2b3a);
+      filter: blur(11px);
+      opacity: .36;
+      z-index: 0;
+      animation: logoGlow 10s linear infinite;
+      transition: opacity .4s, inset .4s var(--ease);
+    }
+    .brand img {
+      position: relative;
+      z-index: 1;
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.45));
+      transition: transform .4s var(--ease);
+    }
+    .brand:hover img { transform: rotate(-8deg) scale(1.06); }
+    .brand:hover .logo-wrap::before,
+    .brand-tab[aria-selected="true"] .logo-wrap::before { opacity: .44; inset: -5px; }
+    @keyframes logoGlow { to { transform: rotate(360deg); } }
+
+    /* Logo acts as the Main/Home tab */
+    .brand-tab {
+      position: relative;
+      align-self: stretch;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .brand-tab:hover { color: var(--text); }
+    .brand-tab[aria-selected="true"] { color: var(--silver); text-shadow: 0 0 14px rgba(196,201,209,.14); }
+    .brand-tab::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--silver);
+      box-shadow: 0 0 10px rgba(196,201,209,.2);
+      transform: scaleX(0);
+      transition: transform .3s var(--ease);
+    }
+    .brand-tab[aria-selected="true"]::after { transform: scaleX(1); }
+
+    /* Home: app cards, each in its own app color */
+    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .app-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 32px;
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s var(--ease), box-shadow .3s;
+    }
+    .app-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--c), var(--c2));
+    }
+    .app-card::after {
+      content: "";
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 180px; height: 180px;
+      border-radius: 50%;
+      background: var(--c);
+      opacity: .08;
+      filter: blur(40px);
+      transition: opacity .3s;
+    }
+    .app-card:hover { border-color: var(--c); transform: translateY(-4px); box-shadow: 0 20px 50px -28px var(--c); }
+    .app-card:hover::after { opacity: .2; }
+    .app-icon {
+      display: grid;
+      place-items: center;
+      width: 48px; height: 48px;
+      margin-bottom: 22px;
+      border-radius: 10px;
+      color: var(--c);
+      background: color-mix(in srgb, var(--c) 14%, transparent);
+      border: 1px solid color-mix(in srgb, var(--c) 35%, transparent);
+    }
+    .app-card .tag {
+      margin: 0 0 6px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--c);
+    }
+    .app-card h3 { margin: 0 0 10px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+    .app-card p { margin: 0 0 28px; color: var(--muted); font-size: 15px; flex: 1; }
+    .app-card .row { display: flex; gap: 10px; }
+    .app-card .btn-app {
+      flex: 1;
+      height: 42px;
+      color: var(--silver);
+      background: linear-gradient(135deg, var(--c), var(--c3));
+      box-shadow: 0 8px 22px -12px var(--c);
+    }
+    .app-card .btn-app:hover { filter: brightness(1.12); transform: translateY(-1px); }
+    .app-card .btn-dl {
+      width: 42px; height: 42px; padding: 0;
+      border: 1px solid var(--border);
+      color: var(--c);
+      background: var(--bg-2);
+    }
+    .app-card .btn-dl:hover { border-color: var(--c); }
+    .terminal .cx { color: #f97316; }
+    .terminal .cy { color: #a855f7; }
+    .terminal .cv { color: #3b82f6; }
+    body[data-app="home"] .cta { display: none; }
+
+    /* App tabs: tagline sits under the app name, a bit smaller */
+    .panel:not(#panel-home) .hero h1 .accent { margin-top: 10px; font-size: .56em; line-height: 1.2; letter-spacing: -0.015em; }
+
+    /* Feature groups (4 per app, 3 features each) */
+    .groups { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .group {
+      position: relative;
+      padding: 32px;
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .group::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent 70%);
+      opacity: .7;
+    }
+    .group:hover { border-color: var(--accent-line); box-shadow: 0 18px 44px -28px var(--glow); }
+    .group-head { display: flex; align-items: center; gap: 14px; margin-bottom: 22px; }
+    .group-icon {
+      display: grid;
+      place-items: center;
+      width: 44px; height: 44px;
+      flex-shrink: 0;
+      border-radius: 10px;
+      color: var(--accent);
+      background: var(--accent-soft);
+      border: 1px solid var(--accent-line);
+    }
+    .group-num { display: block; font-size: 12px; font-weight: 600; letter-spacing: .12em; color: var(--accent); }
+    .group h3 { margin: 0; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+    .group ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 18px; }
+    .group li { display: flex; gap: 12px; }
+    .group li svg { color: var(--accent); margin-top: 4px; }
+    .group h4 { margin: 0 0 3px; font-size: 15px; font-weight: 600; }
+    .group li p { margin: 0; font-size: 14.5px; color: var(--muted); }
+
+    .tabs { display: flex; align-items: center; gap: 28px; height: 100%; }
+    .tab {
+      position: relative;
+      height: 100%;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .tab:hover { color: var(--text); }
+    .tab[aria-selected="true"] { color: var(--text); }
+    .tab::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 2px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      box-shadow: 0 0 12px var(--glow);
+      transform: scaleX(0);
+      transition: transform .3s var(--ease);
+    }
+    .tab[aria-selected="true"]::after { transform: scaleX(1); }
+
+    .header-right { margin-left: auto; display: flex; align-items: center; gap: 20px; }
+    .header-link { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .header-link:hover { color: var(--text); }
+
+    /* ───────── Buttons ───────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 36px;
+      padding: 0 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: background .2s, border-color .2s, color .2s, transform .2s var(--ease), box-shadow .3s;
+    }
+    .btn:active { transform: scale(.98); }
+    .btn-primary {
+      color: var(--on-accent);
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.08) inset, 0 8px 24px -10px var(--glow);
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--accent-2) 0%, var(--accent) 100%);
+      box-shadow: 0 0 0 1px rgba(255,255,255,.14) inset, 0 12px 32px -8px var(--glow);
+      transform: translateY(-1px);
+    }
+    .btn-secondary { border: 1px solid var(--border); background: var(--bg-2); color: var(--text); }
+    .btn-secondary:hover { border-color: var(--accent-line); background: var(--card-2); }
+    .btn-lg { height: 52px; padding: 0 26px; font-size: 15px; }
+    .btn .arrow { transition: transform .2s var(--ease); }
+    .btn:hover .arrow { transform: translateY(2px); }
+
+    /* ───────── Panels ───────── */
+    .panel[hidden] { display: none; }
+    .panel.is-entering .fade { animation: fadeUp .6s var(--ease) both; }
+    .panel.is-entering .fade:nth-child(2) { animation-delay: .05s; }
+    .panel.is-entering .fade:nth-child(3) { animation-delay: .1s; }
+    .panel.is-entering .fade:nth-child(4) { animation-delay: .15s; }
+    .panel.is-entering .fade:nth-child(5) { animation-delay: .2s; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+    /* ───────── Hero ───────── */
+    .hero {
+      position: relative;
+      padding: 112px 0 96px;
+      overflow: hidden;
+    }
+    .hero::before {
+      /* faint grid + accent glow at the top */
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 18% 0%, var(--accent-soft), transparent 70%),
+        radial-gradient(ellipse 40% 45% at 85% 30%, var(--accent-soft), transparent 70%),
+        linear-gradient(var(--border-soft) 1px, transparent 1px) 0 0 / 48px 48px,
+        linear-gradient(90deg, var(--border-soft) 1px, transparent 1px) 0 0 / 48px 48px;
+      mask-image: linear-gradient(to bottom, #000 30%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 100%);
+      pointer-events: none;
+    }
+    .hero .container {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+    .hero h1 {
+      margin: 0 0 24px;
+      font-size: clamp(40px, 5.5vw, 60px);
+      line-height: 1.08;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+    .hero h1 .accent {
+      display: block;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero p.lead {
+      margin: 0 0 40px;
+      max-width: 560px;
+      font-size: 18px;
+      color: var(--muted);
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 16px; }
+
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      row-gap: 10px;
+      margin-top: 44px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .badges span { display: inline-flex; align-items: center; gap: 8px; padding: 0 20px; }
+    .badges span:first-child { padding-left: 0; }
+    .badges span + span { border-left: 1px solid var(--border); }
+    .badges svg { color: var(--accent); }
+
+    /* Terminal card */
+    .terminal {
+      position: relative;
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px -30px rgba(0,0,0,.8), 0 0 60px -25px var(--glow);
+    }
+    .terminal-bar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      height: 42px;
+      padding: 0 16px;
+      border-bottom: 1px solid var(--border);
+      background: var(--card);
+    }
+    .terminal-bar i { width: 12px; height: 12px; border-radius: 50%; background: #2a2a2a; }
+    .terminal-bar small {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--dim);
+    }
+    .terminal pre {
+      margin: 0;
+      padding: 24px 28px 28px;
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text);
+      white-space: pre-wrap;
+      word-break: break-word;
+      min-height: 300px;
+    }
+    .terminal .p   { color: var(--accent); }
+    .terminal .d   { color: var(--dim); }
+    .terminal .ok  { color: #4ade80; }
+    .terminal .wr  { color: #facc15; }
+    .terminal .hl  { color: var(--accent-2); }
+    .terminal .cursor {
+      display: inline-block;
+      width: 8px; height: 16px;
+      background: var(--accent);
+      vertical-align: -2px;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ───────── Strip ───────── */
+    .strip {
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+      padding: 28px 0;
+    }
+    .strip .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px 48px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    /* ───────── Sections ───────── */
+    .section { padding: 112px 0; }
+    .section.tight { padding-top: 0; }
+    .section-head { text-align: center; margin-bottom: 56px; }
+    .eyebrow {
+      margin: 0 0 14px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 42px);
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .section-head p { margin: 16px auto 0; max-width: 580px; color: var(--muted); font-size: 17px; }
+
+    /* Feature cards */
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .card {
+      position: relative;
+      padding: 36px;
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      overflow: hidden;
+      transition: border-color .3s, background .3s, transform .3s var(--ease), box-shadow .3s;
+    }
+    .card::after {
+      content: "";
+      position: absolute;
+      top: 0; right: 0;
+      width: 64px; height: 64px;
+      background: linear-gradient(225deg, var(--accent-soft) 50%, transparent 50%);
+    }
+    .card:hover {
+      border-color: var(--accent-line);
+      background: var(--card-2);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 40px -24px var(--glow);
+    }
+    .card svg { color: var(--accent); margin-bottom: 22px; }
+    .card h3 { margin: 0 0 10px; font-size: 19px; font-weight: 600; letter-spacing: -0.01em; }
+    .card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    /* Steps */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center; }
+    .step-num {
+      display: inline-grid;
+      place-items: center;
+      width: 52px; height: 52px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid var(--accent-line);
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: 0 0 24px -8px var(--glow);
+    }
+    .step h3 { margin: 0 0 8px; font-size: 21px; font-weight: 600; }
+    .step p { margin: 0 auto; max-width: 300px; color: var(--muted); font-size: 15px; }
+
+    /* Feature list */
+    .list {
+      max-width: 820px;
+      margin: 0 auto;
+      border: 1px solid var(--border-soft);
+      border-radius: 10px;
+      background: var(--bg-2);
+      overflow: hidden;
+    }
+    .list-item { display: flex; gap: 18px; padding: 24px 28px; transition: background .2s; }
+    .list-item + .list-item { border-top: 1px solid var(--border-soft); }
+    .list-item:hover { background: var(--card); }
+    .list-item svg { color: var(--accent); margin-top: 3px; }
+    .list-item h4 { margin: 0 0 4px; font-size: 16px; font-weight: 600; }
+    .list-item p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    /* ───────── CTA ───────── */
+    .cta {
+      padding: 112px 0;
+      text-align: center;
+      border-top: 1px solid var(--border-soft);
+      background: radial-gradient(ellipse 50% 80% at 50% 0%, var(--accent-soft), transparent 70%), var(--bg);
+    }
+    .cta h2 { margin: 0 0 14px; font-size: clamp(28px, 3.6vw, 38px); font-weight: 700; letter-spacing: -0.02em; }
+    .cta p { margin: 0 0 36px; color: var(--muted); font-size: 17px; }
+    .cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+    .btn-ghost { height: 52px; padding: 0 22px; font-size: 15px; font-weight: 500; color: var(--muted); }
+    .btn-ghost:hover { color: var(--text); }
+
+    /* ───────── Footer ───────── */
+    .footer { border-top: 1px solid var(--border-soft); padding: 56px 0; text-align: center; }
+    .footer .brand { justify-content: center; margin-bottom: 14px; }
+    .footer .tagline {
+      margin: 0 0 22px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+    .footer-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 24px; font-size: 14px; color: var(--muted); }
+    .footer-links a:hover { color: var(--accent); }
+    .footer-links .sep { width: 1px; height: 14px; background: var(--border); }
+    .footer-links .copy { color: var(--dim); }
+
+    /* ───────── Toast ───────── */
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 100;
+      max-width: calc(100vw - 32px);
+      padding: 12px 16px;
+      background: var(--card-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      font-size: 14px;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,.8), 0 0 30px -12px var(--glow);
+      transform: translate(-50%, 16px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s var(--ease), transform .3s var(--ease);
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ───────── Responsive ───────── */
+    @media (max-width: 960px) {
+      .hero { padding: 72px 0 64px; }
+      .hero .container { grid-template-columns: 1fr; gap: 48px; }
+      .cards, .steps, .apps-grid, .groups { grid-template-columns: 1fr; }
+      .section, .cta { padding: 80px 0; }
+      .section.tight { padding-top: 0; }
+      .header-link { display: none; }
+    }
+    @media (max-width: 680px) {
+      .container { padding: 0 16px; }
+      .header .container { height: auto; flex-wrap: wrap; gap: 0 16px; padding-top: 12px; }
+      .tabs { order: 3; width: 100%; height: 44px; gap: 0; justify-content: space-between; }
+      .tab { flex: 1; text-align: center; }
+      .header-right .btn span.long { display: none; }
+      .hero h1 { font-size: 38px; }
+      .hero p.lead { font-size: 16px; }
+      .hero-actions .btn { width: 100%; }
+      .badges span { padding: 0 12px; }
+      .terminal pre { padding: 18px; font-size: 12.5px; min-height: 0; }
+      .card { padding: 28px; }
+      .list-item { padding: 20px; }
+      .cta-actions .btn { width: 100%; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+
+<body data-app="home">
+
+  <!-- ───────── Header ───────── -->
+  <header class="header">
+    <div class="container">
+      <!-- Logo = Main/Home tab -->
+      <a href="#" class="brand brand-tab" id="brand" aria-controls="panel-home" aria-selected="true" aria-label="zynaps.site — Home">
+        <span class="logo-wrap"><img src="Gemini_Generated_Image_wgi2nnwgi2nnwgi2-Photoroom.jpg" alt="" width="34" height="34" /></span>
+        zynaps.site
+      </a>
+
+      <nav class="tabs" role="tablist" aria-label="Apps">
+        <button class="tab" role="tab" id="tab-x"   aria-controls="panel-x"   aria-selected="false" tabindex="-1" data-app="x">Synapse X</button>
+        <button class="tab" role="tab" id="tab-y"   aria-controls="panel-y"   aria-selected="false" tabindex="-1" data-app="y">Synapse Y</button>
+        <button class="tab" role="tab" id="tab-vpn" aria-controls="panel-vpn" aria-selected="false" tabindex="-1" data-app="vpn">SynapseVPN</button>
+      </nav>
+
+      <div class="header-right">
+        <a class="header-link" href="mailto:support@zynaps.site">Support</a>
+        <a class="btn btn-primary js-download" id="header-btn" href="#apps">
+          <span class="js-btn-label">Get the apps</span><span class="long js-name"></span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═════════ 0. Main / Home — White ═════════ -->
+    <div class="panel" id="panel-home" aria-label="Home">
+      <section class="hero">
+        <div class="container">
+          <div>
+            <h1 class="fade">Every Synapse app.<span class="accent">One place.</span></h1>
+            <p class="lead fade">zynaps.site is the official home of the Synapse family — a crosshair toolkit and game hub, a precision typing trainer and a secure WireGuard VPN. Pick your tool and download it in seconds.</p>
+            <div class="hero-actions fade">
+              <a class="btn btn-primary btn-lg js-scroll-apps" href="#apps">
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+                Explore the apps
+              </a>
+              <a class="btn btn-secondary btn-lg" href="mailto:support@zynaps.site">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                Contact support
+              </a>
+            </div>
+            <div class="badges fade">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>3 apps</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/></svg>Official downloads</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg>Windows 10 / 11</span>
+            </div>
+          </div>
+          <div class="terminal fade" aria-hidden="true">
+            <div class="terminal-bar"><i></i><i></i><i></i><small>zynaps</small></div>
+<pre><span class="p">$</span> zynaps list
+<span class="d">Available apps:</span>
+
+  <span class="cx">●</span> Synapse X    <span class="d">crosshair toolkit    </span><span class="cx">v1.8.0</span>
+  <span class="cy">●</span> Synapse Y    <span class="d">typing analytics     </span><span class="cy">v1.2.0</span>
+  <span class="cv">●</span> SynapseVPN   <span class="d">WireGuard VPN        </span><span class="cv">v2.4.1</span>
+
+<span class="p">$</span> zynaps install --all
+<span class="ok">✔ Ready to download</span>
+
+<span class="p">$</span> <span class="cursor"></span></pre>
+          </div>
+        </div>
+      </section>
+
+      <div class="strip">
+        <div class="container">
+          <span>Synapse X</span><span>Synapse Y</span><span>SynapseVPN</span><span>Free downloads</span><span>Windows 10 / 11</span>
+        </div>
+      </div>
+
+      <section class="section" id="apps">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">The Synapse family</p>
+            <h2>Choose your app</h2>
+            <p>Three focused tools, each built to do one job exceptionally well.</p>
+          </div>
+          <div class="apps-grid">
+            <article class="app-card" style="--c:#f97316; --c2:#fbbf24; --c3:#ea580c">
+              <div class="app-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
+              <p class="tag">Desktop utility &amp; crosshair toolkit</p>
+              <h3>Synapse X</h3>
+              <p>A custom crosshair overlay and game hub with quick tabs for Roblox, Fortnite, Counter-Strike and Minecraft, plus a squad section.</p>
+              <div class="row">
+                <button class="btn btn-app js-goto" type="button" data-target="x">Explore Synapse X</button>
+                <a class="btn btn-dl js-download" data-app="x" href="downloads/SynapseX-Setup-1.8.0.exe" download aria-label="Download Synapse X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+              </div>
+            </article>
+            <article class="app-card" style="--c:#a855f7; --c2:#d946ef; --c3:#9333ea">
+              <div class="app-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg></div>
+              <p class="tag">Typing &amp; speed analytics</p>
+              <h3>Synapse Y</h3>
+              <p>A minimalist typing trainer with live WPM and accuracy tracking, performance history and a cloud-synced global leaderboard.</p>
+              <div class="row">
+                <button class="btn btn-app js-goto" type="button" data-target="y">Explore Synapse Y</button>
+                <a class="btn btn-dl js-download" data-app="y" href="downloads/SynapseY-Setup-1.2.0.exe" download aria-label="Download Synapse Y"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+              </div>
+            </article>
+            <article class="app-card" style="--c:#3b82f6; --c2:#22d3ee; --c3:#2563eb">
+              <div class="app-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+              <p class="tag">Secure networking &amp; identity protection</p>
+              <h3>SynapseVPN</h3>
+              <p>A low-latency WireGuard VPN on Cloudflare WARP, with email-verified sign-in and an active Dark Web Monitor for your accounts.</p>
+              <div class="row">
+                <button class="btn btn-app js-goto" type="button" data-target="vpn">Explore SynapseVPN</button>
+                <a class="btn btn-dl js-download" data-app="vpn" href="downloads/SynapseVPN-Setup-2.4.1.exe" download aria-label="Download SynapseVPN"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Why zynaps.site</p>
+            <h2>Downloads you can trust</h2>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
+              <h3>Official builds</h3>
+              <p>Every installer comes straight from the Synapse team — no third-party mirrors.</p>
+            </article>
+            <article class="card">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg>
+              <h3>Always up to date</h3>
+              <p>You always get the latest stable version of each app.</p>
+            </article>
+            <article class="card">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>
+              <h3>Fast &amp; simple</h3>
+              <p>One click to download, a few seconds to install. That's it.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═════════ 1. Synapse X — Orange ═════════ -->
+    <div class="panel" id="panel-x" role="tabpanel" aria-labelledby="tab-x" hidden>
+      <section class="hero">
+        <div class="container">
+          <div>
+            <h1 class="fade">Synapse X<span class="accent">The Ultimate Desktop Utility &amp; Crosshair Toolkit</span></h1>
+            <p class="lead fade">Synapse X is a sleek, Electron-based desktop utility featuring a fully customizable crosshair overlay toolkit and a dedicated game selection hub for your favorite titles.</p>
+            <div class="hero-actions fade">
+              <a class="btn btn-primary btn-lg js-download" href="downloads/SynapseX-Setup-1.8.0.exe" download>
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+                Download Synapse X
+              </a>
+              <button class="btn btn-secondary btn-lg js-notes" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+                Release notes
+              </button>
+            </div>
+            <div class="badges fade">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>Crosshair toolkit</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="4"/><path d="M7 12h3M8.5 10.5v3"/></svg>Game hub</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>v1.8.0</span>
+            </div>
+          </div>
+          <div class="terminal fade" aria-hidden="true">
+            <div class="terminal-bar"><i></i><i></i><i></i><small>synapse-x</small></div>
+<pre><span class="p">$</span> synapse-x open
+<span class="d">Loading dashboard ...... </span><span class="ok">ready</span>
+<span class="d">Welcome banner ......... </span><span class="hl">"Welcome back!"</span>
+
+<span class="p">$</span> synapse-x select --game counter-strike
+<span class="d">Game tab ............... </span>Counter-Strike
+<span class="d">Crosshair overlay ...... </span><span class="ok">on</span>
+<span class="d">Sidebar ................ </span>collapsed
+<span class="d">Squad .................. </span><span class="ok">4 online</span>
+
+<span class="p">$</span> <span class="cursor"></span></pre>
+          </div>
+        </div>
+      </section>
+
+      <div class="strip">
+        <div class="container">
+          <span>Roblox</span><span>Fortnite</span><span>Counter-Strike</span><span>Minecraft</span><span>Crosshair overlay</span>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Core features</p>
+            <h2>Your crosshair and games, in one hub</h2>
+            <p>Custom reticles, quick game tabs and a clean dashboard — all in Synapse Orange.</p>
+          </div>
+          <div class="groups">
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="1.2"/></svg></div>
+                <div><span class="group-num">01</span><h3>Crosshair Toolkit &amp; Game Hub</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Game-specific tabs</h4><p>A dedicated selection sidebar with instant-access tabs for Roblox, Fortnite, Counter-Strike and Minecraft.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Crosshair overlay</h4><p>A built-in crosshair toolkit that gives you custom reticles for competitive gaming.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 9h4M13 13h4"/></svg></div>
+                <div><span class="group-num">02</span><h3>Advanced Custom UI &amp; Navigation</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Collapsible sidebar</h4><p>A smooth, toggleable left sidebar with the Synapse logo and game tabs — collapse it to maximize screen space.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Animated welcome banner</h4><p>A rotating top banner for messages, updates and welcome texts.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Grid-based dashboard</h4><p>Clean, equal-sized action buttons laid out in a grid for easy navigation and tool selection.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></div>
+                <div><span class="group-num">03</span><h3>Social &amp; Community Integration</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Squad section</h4><p>A dedicated social area built into the dashboard to manage and view your gaming squad.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+                <div><span class="group-num">04</span><h3>Synapse Orange Aesthetic</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Premium dark mode</h4><p>A sleek dark gray and black interface built with custom CSS.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Dynamic hover states</h4><p>Active tabs and buttons get Synapse Orange borders and smooth hover-glow effects that match the brand.</p></div></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═════════ 2. Synapse Y — Purple ═════════ -->
+    <div class="panel" id="panel-y" role="tabpanel" aria-labelledby="tab-y" hidden>
+      <section class="hero">
+        <div class="container">
+          <div>
+            <h1 class="fade">Synapse Y<span class="accent">Precision Typing &amp; Speed Analytics Engine</span></h1>
+            <p class="lead fade">Synapse Y is a minimalist, high-performance typing application engineered to boost WPM, improve key accuracy and deliver real-time telemetry — styled in a sleek, high-contrast purple aesthetic.</p>
+            <div class="hero-actions fade">
+              <a class="btn btn-primary btn-lg js-download" href="downloads/SynapseY-Setup-1.2.0.exe" download>
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+                Download Synapse Y
+              </a>
+              <button class="btn btn-secondary btn-lg js-notes" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+                Release notes
+              </button>
+            </div>
+            <div class="badges fade">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 14l4-4"/><path d="M3.3 19a10 10 0 1 1 17.4 0"/></svg>Live WPM</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>Global leaderboard</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>v1.2.0</span>
+            </div>
+          </div>
+          <div class="terminal fade" aria-hidden="true">
+            <div class="terminal-bar"><i></i><i></i><i></i><small>synapse-y</small></div>
+<pre><span class="p">$</span> synapse-y test --words 50
+<span class="d">Typing ................. </span><span class="ok">complete</span>
+
+<span class="d">WPM .................... </span><span class="hl">112</span>
+<span class="d">Raw WPM ................ </span>118
+<span class="d">Accuracy ............... </span><span class="ok">98.4%</span>
+<span class="d">Personal best .......... </span><span class="ok">new record ✔</span>
+<span class="d">Global rank ............ </span><span class="hl">#42</span> <span class="d">(synced)</span>
+
+<span class="p">$</span> <span class="cursor"></span></pre>
+          </div>
+        </div>
+      </section>
+
+      <div class="strip">
+        <div class="container">
+          <span>Typing tests</span><span>Live WPM</span><span>Accuracy</span><span>Global leaderboard</span><span>Cloud sync</span>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Core features</p>
+            <h2>Type faster. Track everything.</h2>
+            <p>A distraction-free typing engine with live analytics and a global leaderboard.</p>
+          </div>
+          <div class="groups">
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></svg></div>
+                <div><span class="group-num">01</span><h3>Precision Typing &amp; Practice Engine</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Focused typing interface</h4><p>A clean, distraction-free space to practice typing speed and accuracy without clutter.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Custom test parameters</h4><p>Run typing tests tailored to your goals to build raw speed and muscle memory.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-5 3 3 5-7"/></svg></div>
+                <div><span class="group-num">02</span><h3>Advanced Telemetry &amp; Analytics</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Live speed tracking</h4><p>See real-time WPM, raw WPM and accuracy during every typing session.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Performance history</h4><p>Follow your long-term speed progress and consistency over time.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg></div>
+                <div><span class="group-num">03</span><h3>Cloud-Synced Global Leaderboards</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Firebase integration</h4><p>Securely syncs your profile and top scores across all your machines.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Global ranking</h4><p>Compete on the global leaderboard and see how your WPM stacks up across the Synapse ecosystem.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></div>
+                <div><span class="group-num">04</span><h3>Minimalist Zen Design</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Synapse Purple theme</h4><p>A high-contrast dark interface with glowing purple highlights and crisp, modern fonts.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Seamless local storage</h4><p>Fast, persistent logins so you can start typing the moment you open the app.</p></div></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ═════════ 3. SynapseVPN — Blue ═════════ -->
+    <div class="panel" id="panel-vpn" role="tabpanel" aria-labelledby="tab-vpn" hidden>
+      <section class="hero">
+        <div class="container">
+          <div>
+            <h1 class="fade">SynapseVPN<span class="accent">Secure Networking &amp; Identity Protection</span></h1>
+            <p class="lead fade">SynapseVPN is a high-speed encrypted networking tool and security dashboard. It combines a low-latency WireGuard VPN with active dark web surveillance to keep your connection fast and your accounts secure.</p>
+            <div class="hero-actions fade">
+              <a class="btn btn-primary btn-lg js-download" href="downloads/SynapseVPN-Setup-2.4.1.exe" download>
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+                Download SynapseVPN
+              </a>
+              <button class="btn btn-secondary btn-lg js-notes" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+                Release notes
+              </button>
+            </div>
+            <div class="badges fade">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>WireGuard</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Dark Web Monitor</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>v2.4.1</span>
+            </div>
+          </div>
+          <div class="terminal fade" aria-hidden="true">
+            <div class="terminal-bar"><i></i><i></i><i></i><small>synapsevpn</small></div>
+<pre><span class="p">$</span> synapsevpn login
+<span class="ok">✔ Trusted device</span> <span class="d">— verification skipped</span>
+
+<span class="p">$</span> synapsevpn connect
+<span class="d">Network ............ </span>Cloudflare WARP
+<span class="d">Protocol ........... </span>WireGuard
+<span class="ok">● Connected</span>  <span class="d">ping</span> <span class="hl">14 ms</span>
+
+<span class="d">Dark Web Monitor ... </span>2 emails · <span class="ok">all clear</span>
+
+<span class="p">$</span> <span class="cursor"></span></pre>
+          </div>
+        </div>
+      </section>
+
+      <div class="strip">
+        <div class="container">
+          <span>WireGuard</span><span>Cloudflare WARP</span><span>One-click connect</span><span>Dark Web Monitor</span><span>Email verification</span>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Core features</p>
+            <h2>Fast connection. Secure accounts.</h2>
+            <p>A low-latency VPN and an active breach monitor in one clean dashboard.</p>
+          </div>
+          <div class="groups">
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
+                <div><span class="group-num">01</span><h3>WireGuard &amp; Cloudflare WARP Core</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>High-speed tunneling</h4><p>Cloudflare's WARP network and the WireGuard protocol give you fast, free, low-ping routing — perfect for gaming and streaming.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>One-click secure tunnels</h4><p>Works directly with your system's network adapters to set up a secure tunnel in a single click.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></div>
+                <div><span class="group-num">02</span><h3>Advanced Authentication Engine</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>6-digit email verification</h4><p>A secure sign-up and sign-in flow that sends a 6-digit verification code straight to your inbox.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Persistent sessions</h4><p>Remembers trusted devices, so returning users skip the verification screen on startup.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
+                <div><span class="group-num">03</span><h3>Dark Web Monitor Pro</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Active breach surveillance</h4><p>Monitors your email addresses against dark web forums, databases and marketplaces for exposed credentials.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Live status dashboard</h4><p>A clean grid with a master on/off toggle, your monitored emails and status badges that alert you the moment a leak is found.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></div>
+                <div><span class="group-num">04</span><h3>Premium Light-Theme Interface</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Card-based UI</h4><p>A clean white and light-gray design with a collapsible sidebar, the Synapse globe icon, a search bar and a notification center.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Custom window controls</h4><p>A borderless window with a draggable top bar and built-in minimize, maximize and close buttons.</p></div></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ───────── Shared CTA (follows the selected app) ───────── -->
+    <section class="cta">
+      <div class="container">
+        <h2>Ready to get <span class="js-name-plain">Synapse X</span>?</h2>
+        <p class="js-cta-text">Free to download. Up and running in under a minute.</p>
+        <div class="cta-actions">
+          <a class="btn btn-primary btn-lg js-download" href="downloads/SynapseX-Setup-1.8.0.exe" download>
+            <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+            Download now
+          </a>
+          <a class="btn btn-ghost" href="mailto:support@zynaps.site">Contact support</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ───────── Footer ───────── -->
+  <footer class="footer">
+    <div class="container">
+      <a href="#" class="brand js-home">
+        <span class="logo-wrap"><img src="Gemini_Generated_Image_wgi2nnwgi2nnwgi2-Photoroom.jpg" alt="" width="34" height="34" /></span>
+        zynaps.site
+      </a>
+      <p class="tagline">The Synapse family of apps</p>
+      <div class="footer-links">
+        <a href="#" class="js-home">Home</a>
+        <a href="#x">Synapse X</a>
+        <a href="#y">Synapse Y</a>
+        <a href="#vpn">SynapseVPN</a>
+        <span class="sep"></span>
+        <span class="copy">© <span id="year">2026</span> zynaps.site</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (function () {
+      // App details in tab order. Edit file paths, sizes and notes here.
+      const APPS = {
+        x:   { name: 'Synapse X',  file: 'downloads/SynapseX-Setup-1.8.0.exe',   size: '36 MB',
+               cta: 'Your crosshair, your games and your squad in one hub.',
+               notes: 'Synapse X 1.8.0 — new squad section, collapsible sidebar and animated welcome banner.' },
+        y:   { name: 'Synapse Y',  file: 'downloads/SynapseY-Setup-1.2.0.exe',   size: '22 MB',
+               cta: 'Boost your WPM and climb the global leaderboard.',
+               notes: 'Synapse Y 1.2.0 — live WPM tracking, performance history and cloud-synced leaderboards.' },
+        vpn: { name: 'SynapseVPN', file: 'downloads/SynapseVPN-Setup-2.4.1.exe', size: '48 MB',
+               cta: 'Fast WireGuard routing and active dark web protection.',
+               notes: 'SynapseVPN 2.4.1 — Cloudflare WARP tunneling, 6-digit email verification and Dark Web Monitor Pro.' }
+      };
+      const HOME = 'home';
+      const tabs = Array.from(document.querySelectorAll('.tab'));
+      const panels = Array.from(document.querySelectorAll('.panel'));
+      const brand = document.getElementById('brand');
+      const headerBtn = document.getElementById('header-btn');
+      let current = null;
+
+      function activate(id, opts) {
+        opts = opts || {};
+        if (id !== HOME && !APPS[id]) id = HOME;   // unknown or empty → Main tab
+        const isHome = id === HOME;
+        const app = APPS[id];
+
+        // Logo = Main tab
+        brand.setAttribute('aria-selected', isHome);
+
+        tabs.forEach((t, i) => {
+          const on = t.dataset.app === id;
+          t.setAttribute('aria-selected', on);
+          t.tabIndex = on || (isHome && i === 0) ? 0 : -1;
+          if (on && opts.focus) t.focus();
+        });
+
+        panels.forEach(p => {
+          const on = p.id === 'panel-' + id;
+          p.hidden = !on;
+          p.classList.remove('is-entering');
+          if (on) { void p.offsetWidth; p.classList.add('is-entering'); }
+        });
+
+        // Switches the color theme (white / orange / purple / blue)
+        document.body.dataset.app = id;
+
+        // Header button: "Get the apps" on Main, otherwise downloads the selected app
+        if (isHome) {
+          headerBtn.href = '#apps';
+          headerBtn.removeAttribute('download');
+          document.querySelector('.js-btn-label').textContent = 'Get the apps';
+          document.querySelectorAll('.js-name').forEach(el => el.innerHTML = '');
+        } else {
+          headerBtn.href = app.file;
+          headerBtn.setAttribute('download', '');
+          document.querySelector('.js-btn-label').textContent = 'Download';
+          document.querySelectorAll('.js-name').forEach(el => el.innerHTML = '&nbsp;' + app.name);
+          document.querySelectorAll('.cta .js-download').forEach(a => a.href = app.file);
+          document.querySelectorAll('.js-name-plain').forEach(el => el.textContent = app.name);
+          document.querySelector('.js-cta-text').textContent = app.cta;
+        }
+
+        if (current !== null && !opts.keepScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
+        current = id;
+
+        // Main tab has a clean URL; apps use #x, #y, #vpn
+        const url = isHome ? location.pathname + location.search : '#' + id;
+        if ((isHome && location.hash) || (!isHome && location.hash !== '#' + id)) history.replaceState(null, '', url);
+      }
+
+      function scrollToApps() {
+        document.getElementById('apps').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      tabs.forEach(t => t.addEventListener('click', () => activate(t.dataset.app)));
+
+      // Logo and footer "Home" links always go back to the Main tab
+      [brand].concat(Array.from(document.querySelectorAll('.js-home'))).forEach(el =>
+        el.addEventListener('click', e => { e.preventDefault(); activate(HOME); window.scrollTo({ top: 0, behavior: 'smooth' }); })
+      );
+
+      // Home: "Explore" buttons open that app's tab; "Explore the apps" scrolls to the cards
+      document.querySelectorAll('.js-goto').forEach(b => b.addEventListener('click', () => activate(b.dataset.target)));
+      document.querySelectorAll('.js-scroll-apps').forEach(a => a.addEventListener('click', e => { e.preventDefault(); scrollToApps(); }));
+      headerBtn.addEventListener('click', e => {
+        if (current === HOME) { e.preventDefault(); scrollToApps(); }
+      });
+
+      // Arrow keys move between tabs
+      document.querySelector('.tabs').addEventListener('keydown', e => {
+        const i = tabs.indexOf(document.activeElement);
+        if (i < 0) return;
+        let n = null;
+        if (e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+        if (e.key === 'ArrowLeft')  n = (i - 1 + tabs.length) % tabs.length;
+        if (e.key === 'Home') n = 0;
+        if (e.key === 'End')  n = tabs.length - 1;
+        if (n !== null) { e.preventDefault(); activate(tabs[n].dataset.app, { focus: true }); }
+      });
+
+      // Links like #x, #y, #vpn (footer, shared URLs)
+      window.addEventListener('hashchange', () => activate(location.hash.slice(1)));
+
+      // Toast messages
+      const toast = document.getElementById('toast');
+      let timer;
+      function showToast(msg) {
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(timer);
+        timer = setTimeout(() => toast.classList.remove('show'), 3200);
+      }
+
+      document.querySelectorAll('.js-download').forEach(a => a.addEventListener('click', () => {
+        const app = APPS[a.dataset.app || current];
+        if (!app) return; // header button on Main only scrolls
+        showToast('Starting download: ' + app.name + ' (' + app.size + ')…');
+      }));
+      document.querySelectorAll('.js-notes').forEach(b => b.addEventListener('click', () => showToast(APPS[current].notes)));
+
+      document.getElementById('year').textContent = new Date().getFullYear();
+      activate(location.hash.slice(1), { keepScroll: true });
+    })();
+  </script>
+</body>
+</html>
