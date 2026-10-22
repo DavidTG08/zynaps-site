@@ -633,6 +633,56 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
 
+    /* ───────── Tip / support the developer ───────── */
+    .tip-link { display: inline-flex; align-items: center; gap: 6px; }
+    .tip-link svg { color: #f43f5e; }
+    .tip-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 28px;
+      padding: 36px 40px;
+      background: var(--card);
+      border: 1px solid var(--border-soft);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .tip-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 45% 120% at 0% 50%, rgba(244,63,94,.10), transparent 70%);
+      pointer-events: none;
+    }
+    .tip-heart {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 64px; height: 64px;
+      border-radius: 16px;
+      color: #f43f5e;
+      background: rgba(244,63,94,.12);
+      border: 1px solid rgba(244,63,94,.3);
+      animation: beat 2.4s ease-in-out infinite;
+    }
+    @keyframes beat { 0%, 100% { transform: scale(1); } 12% { transform: scale(1.08); } 24% { transform: scale(1); } }
+    .tip-card h3 { margin: 0 0 6px; font-size: 22px; font-weight: 700; letter-spacing: -0.01em; }
+    .tip-card p { margin: 0; color: var(--muted); font-size: 15.5px; max-width: 560px; }
+    .tip-actions { position: relative; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .btn-tip {
+      color: var(--silver);
+      background: linear-gradient(135deg, #f43f5e, #e11d48);
+      box-shadow: 0 10px 28px -12px rgba(244,63,94,.7);
+    }
+    .btn-tip:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .tip-note { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--dim); }
+    @media (max-width: 860px) {
+      .tip-card { grid-template-columns: 1fr; text-align: center; justify-items: center; padding: 32px 24px; }
+      .tip-actions { width: 100%; }
+      .tip-actions .btn { width: 100%; }
+    }
+
     /* ───────── Contact menu (Support) ───────── */
     .contact-backdrop {
       position: fixed;
@@ -732,6 +782,7 @@
       </nav>
 
       <div class="header-right">
+        <a class="header-link tip-link js-tip" href="#tip"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2.3 4.5 6 4.5c2.1 0 3.4 1.1 4 2.2.6-1.1 1.9-2.2 4-2.2 3.7 0 5.6 3.9 4 7.2C19.5 16.4 12 21 12 21z"/></svg>Tip</a>
         <a class="header-link" href="mailto:support@zynaps.site">Support</a>
         <a class="btn btn-primary js-download" id="header-btn" href="#apps">
           <span class="js-btn-label">Get the apps</span><span class="long js-name"></span>
@@ -826,6 +877,27 @@
                 <a class="btn btn-dl js-download" data-app="vpn" href="downloads/SynapseVPN-Setup-2.4.1.exe" download aria-label="Download SynapseVPN"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section tight" id="tip">
+        <div class="container">
+          <div class="tip-card">
+            <div class="tip-heart" aria-hidden="true">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2.3 4.5 6 4.5c2.1 0 3.4 1.1 4 2.2.6-1.1 1.9-2.2 4-2.2 3.7 0 5.6 3.9 4 7.2C19.5 16.4 12 21 12 21z"/></svg>
+            </div>
+            <div>
+              <h3>Enjoying the Synapse apps?</h3>
+              <p>All Synapse apps are free to download. If they've helped you out, you can leave a tip of any amount to support future updates. It's completely optional — thank you!</p>
+            </div>
+            <div class="tip-actions">
+              <a class="btn btn-tip btn-lg js-tip" href="#tip">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-10-9.3C.4 8.4 2.3 4.5 6 4.5c2.1 0 3.4 1.1 4 2.2.6-1.1 1.9-2.2 4-2.2 3.7 0 5.6 3.9 4 7.2C19.5 16.4 12 21 12 21z"/></svg>
+                Leave a tip
+              </a>
+              <span class="tip-note"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Secure checkout by Stripe</span>
+            </div>
           </div>
         </div>
       </section>
@@ -1179,6 +1251,7 @@
       <p class="tagline">The Synapse family of apps</p>
       <div class="footer-links">
         <a href="#" class="js-home">Home</a>
+        <a href="#tip" class="js-tip">Tip</a>
         <a href="#x">Synapse X</a>
         <a href="#y">Synapse Y</a>
         <a href="#vpn">SynapseVPN</a>
@@ -1324,6 +1397,25 @@
 
       // Links like #x, #y, #vpn (footer, shared URLs)
       window.addEventListener('hashchange', () => activate(location.hash.slice(1)));
+
+      // ───── Tips (Stripe Payment Link) ─────
+      // Paste your Stripe Payment Link here, e.g. 'https://buy.stripe.com/abc123'.
+      const TIP_URL = '';
+
+      document.querySelectorAll('.js-tip').forEach(a => {
+        if (TIP_URL) {
+          a.href = TIP_URL;
+          a.target = '_blank';
+          a.rel = 'noopener';
+        } else {
+          a.addEventListener('click', e => { e.preventDefault(); showToast('Tips are coming soon — thank you for your support!'); });
+        }
+      });
+
+      // Stripe can send people back to https://zynaps.site/#thanks after tipping
+      if (location.hash === '#thanks') {
+        setTimeout(() => showToast('Thank you so much for your tip! ♥'), 400);
+      }
 
       // ───── Contact menu ─────
       // A website can't tell which email apps a visitor has, so "Support" opens
