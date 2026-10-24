@@ -1,6 +1,6 @@
 # zynaps.site
 
-Download hub for three apps: **Synapse X**, **Synapse Y** and **SynapseVPN**.
+Download hub for three apps: **Synapse X**, **Synapse Y** and **Synapse M** (maps; replaced SynapseVPN).
 
 ## How it's built
 - One static page: `index.html` (HTML, CSS and JS in one file). No build step.
@@ -14,9 +14,15 @@ Download hub for three apps: **Synapse X**, **Synapse Y** and **SynapseVPN**.
 - GitHub sometimes commits to `CNAME` itself; if a push is rejected, `git pull --rebase` and push again.
 
 ## Page structure
-- Tabs: the zynaps.site logo is the **Main/Home** tab (default, clean URL). App tabs: Synapse X (`#x`), Synapse Y (`#y`), SynapseVPN (`#vpn`), in that order.
+- Tabs: the zynaps.site logo is the **Main/Home** tab (default, clean URL). App tabs: Synapse X (`#x`), Synapse Y (`#y`), Synapse M (`#m`), in that order. Old `#vpn` links redirect to `#m`.
 - Each tab sets `body[data-app]`, which switches the accent color:
-  - home = silver (`--silver: #c4c9d1`), x = orange, y = purple, vpn = blue.
+  - home = silver (`--silver: #c4c9d1`), x = orange, y = purple, m = blue/violet.
+
+## Synapse M (maps)
+- Source code: https://github.com/DavidTG08/synapse-maps (Vite + MapLibre web app, Capacitor Android wrapper).
+- The web app is the built copy in `maps/` → https://zynaps.site/maps/. The Synapse M tab embeds it in an iframe and links to it.
+- To update `maps/`: in the synapse-maps repo run `npm run build`, delete `maps/` here, copy `dist/*` into `maps/`, commit and push.
+- The APK download links to `https://github.com/DavidTG08/synapse-maps/releases/latest/download/synapse-m.apk`. A new APK is built and released by GitHub Actions when a `v*` tag is pushed in synapse-maps.
 - All text uses `--silver` (no pure white). The logo has a subtle rotating multi-color glow (`.logo-wrap::before`).
 - App details (download file, size, release note, CTA text) live in the `APPS` object in the script. Installer files are placeholders under `downloads/` and don't exist yet.
 - "Feedback" (floating bottom-right button + footer link) opens a dialog (Good/Bad, message, optional email) that emails `support@zynaps.site` via FormSubmit (`formsubmit.co/ajax/...`). FormSubmit needs a one-time "Activate" click in the first email it sends to that address.

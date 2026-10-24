@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#05070d" />
+  <title>Synapse M</title>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="./assets/index-i1En-_p9.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-CY4QXeqd.css">
+</head>
+<body>
+  <div id="map"></div>
+
+  <!-- ============ Search ============ -->
+  <header id="topbar">
+    <div class="searchbox glass" id="searchbox">
+      <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 16V8l5 4.5L17 8v8"/></svg></div>
+      <input id="search" type="search" placeholder="Search places and addresses" autocomplete="off" enterkeyhint="search" />
+      <button class="icon-btn" id="clearSearch" hidden aria-label="Clear"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <span class="sep"></span>
+      <button class="icon-btn" id="settingsBtn" aria-label="Settings">
+        <svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg>
+      </button>
+    </div>
+    <div class="suggestions glass" id="suggestions" hidden></div>
+    <div class="chips" id="chips">
+      <button class="chip glass" data-q="restaurant"><svg viewBox="0 0 24 24"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 21V3c-2 1-3 4-3 8h3"/></svg>Restaurants</button>
+      <button class="chip glass" data-q="cafe"><svg viewBox="0 0 24 24"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3M12 3v3"/></svg>Coffee</button>
+      <button class="chip glass" data-q="fuel"><svg viewBox="0 0 24 24"><path d="M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h14M5 10h10M15 8l3 3v6a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg>Gas</button>
+      <button class="chip glass" data-q="supermarket"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11h10.2L20 7H6.2"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg>Groceries</button>
+      <button class="chip glass" data-q="parking"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="4"/><path d="M10 17V8h3a2.5 2.5 0 0 1 0 5h-3"/></svg>Parking</button>
+      <button class="chip glass" data-q="hotel"><svg viewBox="0 0 24 24"><path d="M3 19V6M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-7v6"/><circle cx="7" cy="11" r="2"/></svg>Hotels</button>
+    </div>
+  </header>
+
+  <!-- ============ Map controls ============ -->
+  <div id="controls">
+    <div class="ctrl-stack glass">
+      <button id="layersBtn" aria-label="Map type"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/></svg></button>
+      <button id="tiltBtn" aria-label="3D view"><span class="txt">3D</span></button>
+      <button id="trafficBtn" aria-label="Traffic"><svg viewBox="0 0 24 24"><rect x="8" y="2.5" width="8" height="19" rx="4"/><circle cx="12" cy="7.5" r="1.3" class="fill"/><circle cx="12" cy="12" r="1.3" class="fill"/><circle cx="12" cy="16.5" r="1.3" class="fill"/></svg></button>
+      <button id="compassBtn" aria-label="Reset north"><svg viewBox="0 0 24 24" id="compassIcon"><path d="M12 3l3.5 9h-7z" class="needle-n"/><path d="M12 21l-3.5-9h7z" class="needle-s"/></svg></button>
+    </div>
+    <button class="locate glass" id="locateBtn" aria-label="My location">
+      <svg viewBox="0 0 24 24"><path d="M20.5 3.5L3.5 10.6l7 2.4 2.4 7z" class="fill-soft"/></svg>
+    </button>
+  </div>
+
+  <!-- ============ Bottom sheet / side panel ============ -->
+  <section id="sheet" class="glass hidden">
+    <div class="grabber"></div>
+
+    <!-- Place -->
+    <div id="placeView" class="view" hidden>
+      <div class="head">
+        <div class="head-text">
+          <h2 id="placeName"></h2>
+          <p class="sub" id="placeSub"></p>
+          <div class="meta" id="placeMeta"></div>
+        </div>
+        <button class="icon-btn round" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="dirBtn">
+          <svg viewBox="0 0 24 24"><path d="M12 2.8l9.2 9.2-9.2 9.2L2.8 12z"/><path d="M9 14.5V12a1 1 0 0 1 1-1h4.5M12.8 9l2 2-2 2"/></svg>
+          Directions
+        </button>
+        <button class="btn" id="saveBtn"><svg viewBox="0 0 24 24" id="saveIcon"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span id="saveLabel">Save</span></button>
+        <button class="btn" id="shareBtn"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Share</button>
+      </div>
+    </div>
+
+    <!-- Directions -->
+    <div id="dirView" class="view" hidden>
+      <div class="dir-head">
+        <button class="icon-btn round" data-close aria-label="Back"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <div class="segmented" id="modes">
+          <button data-mode="car" class="active" aria-label="Drive"><svg viewBox="0 0 24 24"><path d="M5 17h14v-4.5l-1.8-4.6A2 2 0 0 0 15.3 6.6H8.7a2 2 0 0 0-1.9 1.3L5 12.5zM5 12.5h14"/><circle cx="8" cy="15" r=".8" class="fill"/><circle cx="16" cy="15" r=".8" class="fill"/><path d="M6.5 17v2M17.5 17v2"/></svg></button>
+          <button data-mode="bike" aria-label="Bike"><svg viewBox="0 0 24 24"><circle cx="6" cy="16" r="3.5"/><circle cx="18" cy="16" r="3.5"/><path d="M6 16l4-7h5l3 7M10 9l3 7h-1M14 5h2l1 4"/></svg></button>
+          <button data-mode="walk" aria-label="Walk"><svg viewBox="0 0 24 24"><circle cx="13" cy="4.5" r="1.8"/><path d="M10 21l2.5-6.5L15 17v4M9 12l2-4.5 3 1 2 3.5M12.5 14.5L11 7.5"/></svg></button>
+        </div>
+      </div>
+      <div class="waypoints">
+        <div class="wp-dots"><span class="dot a"></span><span class="line"></span><span class="dot b"></span></div>
+        <div class="wp-inputs">
+          <div class="ac"><input id="fromInput" placeholder="Choose start" autocomplete="off" /><div class="suggestions" hidden></div></div>
+          <div class="ac"><input id="toInput" placeholder="Choose destination" autocomplete="off" /><div class="suggestions" hidden></div></div>
+        </div>
+        <button class="icon-btn round" id="swapBtn" aria-label="Swap"><svg viewBox="0 0 24 24"><path d="M7 4v16M3 8l4-4 4 4M17 20V4M21 16l-4 4-4-4"/></svg></button>
+      </div>
+      <div id="routeStatus" class="status"></div>
+      <div id="routeList"></div>
+      <div class="start-row" id="startRow" hidden>
+        <button class="btn primary big" id="startBtn"><svg viewBox="0 0 24 24"><path d="M4 11.5L20 4l-7.5 16-1.8-6.7z" class="fill"/></svg>Start</button>
+        <button class="btn big" id="simBtn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" class="fill"/></svg>Preview drive</button>
+      </div>
+      <details id="stepsWrap" hidden>
+        <summary>Step-by-step</summary>
+        <ol id="steps"></ol>
+      </details>
+    </div>
+
+    <!-- Layers -->
+    <div id="layersView" class="view" hidden>
+      <div class="head">
+        <h2>Map type</h2>
+        <button class="icon-btn round" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="type-grid" id="styleGrid">
+        <button data-style="earth"><span class="sw sw-earth"></span>Earth</button>
+        <button data-style="map"><span class="sw sw-map"></span>Map</button>
+        <button data-style="night"><span class="sw sw-night"></span>Night</button>
+      </div>
+      <div class="list">
+        <label class="row">
+          <span class="row-text"><b>3D terrain</b><small>Mountains and valleys in Earth view</small></span>
+          <input type="checkbox" class="switch" id="terrainToggle" />
+        </label>
+        <label class="row">
+          <span class="row-text"><b>Live traffic</b><small id="trafficHint">Traffic flow, closures and incidents</small></span>
+          <input type="checkbox" class="switch" id="trafficToggle" />
+        </label>
+      </div>
+    </div>
+
+    <!-- Settings -->
+    <div id="settingsView" class="view" hidden>
+      <div class="head">
+        <h2>Settings</h2>
+        <button class="icon-btn round" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <label class="field">
+        <span class="row-text"><b>TomTom API key</b><small>Free, optional. Unlocks live traffic, closures, accidents, speed limits and traffic-aware arrival times. Get one without a card at <a href="https://developer.tomtom.com" target="_blank" rel="noopener">developer.tomtom.com</a>.</small></span>
+        <input id="keyInput" placeholder="Paste your key" autocomplete="off" spellcheck="false" />
+      </label>
+      <div class="list">
+        <label class="row"><span class="row-text"><b>Voice guidance</b></span><input type="checkbox" class="switch" id="voiceToggle" /></label>
+        <label class="row"><span class="row-text"><b>Miles instead of km</b></span><input type="checkbox" class="switch" id="imperialToggle" /></label>
+      </div>
+      <div class="actions">
+        <button class="btn primary" id="saveSettings">Save</button>
+        <button class="btn" id="clearData">Clear saved places</button>
+      </div>
+      <p class="about">Synapse M · © OpenStreetMap contributors · OpenFreeMap · Esri imagery · Photon · OSRM</p>
+    </div>
+  </section>
+
+  <!-- ============ Navigation UI ============ -->
+  <div id="navUi" hidden>
+    <div class="nav-top">
+      <div class="nav-card" id="navCard">
+        <div class="nav-main">
+          <div class="nav-arrow" id="navArrow"></div>
+          <div class="nav-text">
+            <div class="nav-dist" id="navDist"></div>
+            <div class="nav-road" id="navRoad"></div>
+          </div>
+        </div>
+        <div class="lanes" id="navLanes" hidden></div>
+      </div>
+      <div class="nav-then" id="navThen" hidden><span>Then</span><span id="navThenIcon"></span></div>
+    </div>
+
+    <div class="nav-side">
+      <button class="nav-btn glass" id="navTiltBtn" aria-label="2D or 3D"><span class="txt">2D</span></button>
+      <button class="nav-btn glass" id="navOverviewBtn" aria-label="Route overview"><svg viewBox="0 0 24 24"><path d="M9 4L3 6.5v13.5L9 17.5l6 2.5 6-2.5V4L15 6.5zM9 4v13.5M15 6.5V20"/></svg></button>
+      <button class="nav-btn glass" id="muteBtn" aria-label="Voice"><svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path id="muteWaves" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
+    </div>
+
+    <div class="speed" id="speedBox">
+      <div class="limit" id="limitSign" hidden><span id="limitVal"></span></div>
+      <div class="cur glass"><b id="curSpeed">0</b><small id="speedUnit">km/h</small></div>
+    </div>
+
+    <div class="road-pill glass" id="roadPill" hidden></div>
+    <button class="recenter" id="recenterBtn" hidden><svg viewBox="0 0 24 24"><path d="M20.5 3.5L3.5 10.6l7 2.4 2.4 7z" class="fill"/></svg>Re-center</button>
+
+    <div class="nav-bar glass">
+      <div class="nav-eta">
+        <div class="sim-tag" id="simBadge" hidden>Preview drive</div>
+        <div class="eta-big" id="navEta"></div>
+        <div class="eta-sub" id="navRemain"></div>
+      </div>
+      <button class="end-btn" id="endNavBtn" aria-label="End navigation"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="progress"><span id="navProgress"></span></div>
+    </div>
+  </div>
+
+  <div id="toast" class="glass-dark" hidden></div>
+</body>
+</html>
