@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>zynaps.site — Downloads</title>
+  <title>zynaps.site â€” Downloads</title>
   <meta name="description" content="Download Synapse X, Synapse Y and Synapse M." />
   <link rel="icon" href="Gemini_Generated_Image_wgi2nnwgi2nnwgi2-Photoroom.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,7 +22,7 @@
       --muted: #a3a3a3;
       --dim: #737373;
 
-      /* Accent changes per app — see body[data-app] below */
+      /* Accent changes per app â€” see body[data-app] below */
       --accent: #f97316;
       --accent-2: #fb923c;
       --accent-hover: #ea580c;
@@ -35,24 +35,24 @@
       --ease: cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    /* Main / Home — one soft silver used for every accent */
+    /* Main / Home â€” one soft silver used for every accent */
     body[data-app="home"] {
       --accent: var(--silver); --accent-2: var(--silver); --accent-hover: var(--silver);
       --accent-soft: rgba(196,201,209,.07); --accent-line: rgba(196,201,209,.26); --glow: rgba(196,201,209,.16);
       --on-accent: #0b0c0e;
     }
     body[data-app="home"] .btn-primary:hover { filter: brightness(1.06); }
-    /* Synapse X — Orange */
+    /* Synapse X â€” Orange */
     body[data-app="x"] {
       --accent: #f97316; --accent-2: #fbbf24; --accent-hover: #ea580c;
       --accent-soft: rgba(249,115,22,.12); --accent-line: rgba(249,115,22,.35); --glow: rgba(249,115,22,.45);
     }
-    /* Synapse Y — Purple */
+    /* Synapse Y â€” Purple */
     body[data-app="y"] {
       --accent: #a855f7; --accent-2: #d946ef; --accent-hover: #9333ea;
       --accent-soft: rgba(168,85,247,.13); --accent-line: rgba(168,85,247,.38); --glow: rgba(168,85,247,.45);
     }
-    /* Synapse M — Blue */
+    /* Synapse M â€” Blue */
     body[data-app="m"] {
       --accent: #4f7cff; --accent-2: #a34fff; --accent-hover: #3d63e6;
       --accent-soft: rgba(79,124,255,.13); --accent-line: rgba(79,124,255,.38); --glow: rgba(79,124,255,.45);
@@ -84,7 +84,7 @@
 
     .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-    /* ───────── Header ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Header â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .header {
       position: sticky;
       top: 0;
@@ -302,7 +302,7 @@
     .header-link { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; }
     .header-link:hover { color: var(--text); }
 
-    /* ───────── Buttons ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Buttons â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -333,7 +333,7 @@
     .btn .arrow { transition: transform .2s var(--ease); }
     .btn:hover .arrow { transform: translateY(2px); }
 
-    /* ───────── Panels ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Panels â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .panel[hidden] { display: none; }
     .panel.is-entering .fade { animation: fadeUp .6s var(--ease) both; }
     .panel.is-entering .fade:nth-child(2) { animation-delay: .05s; }
@@ -342,7 +342,7 @@
     .panel.is-entering .fade:nth-child(5) { animation-delay: .2s; }
     @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
-    /* ───────── Hero ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Hero â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .hero {
       position: relative;
       padding: 112px 0 96px;
@@ -461,7 +461,7 @@
     }
     @keyframes blink { 50% { opacity: 0; } }
 
-    /* ───────── Strip ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Strip â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .strip {
       border-top: 1px solid var(--border-soft);
       border-bottom: 1px solid var(--border-soft);
@@ -479,7 +479,7 @@
       color: var(--dim);
     }
 
-    /* ───────── Sections ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Sections â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .section { padding: 112px 0; }
     .section.tight { padding-top: 0; }
     .section-head { text-align: center; margin-bottom: 56px; }
@@ -562,7 +562,7 @@
     .list-item h4 { margin: 0 0 4px; font-size: 16px; font-weight: 600; }
     .list-item p { margin: 0; color: var(--muted); font-size: 15px; }
 
-    /* ───────── CTA ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .cta {
       padding: 112px 0;
       text-align: center;
@@ -575,7 +575,7 @@
     .btn-ghost { height: 52px; padding: 0 22px; font-size: 15px; font-weight: 500; color: var(--muted); }
     .btn-ghost:hover { color: var(--text); }
 
-    /* ───────── Footer ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .footer { border-top: 1px solid var(--border-soft); padding: 56px 0; text-align: center; }
     .footer .brand { justify-content: center; margin-bottom: 14px; }
     .footer .tagline {
@@ -591,7 +591,7 @@
     .footer-links .sep { width: 1px; height: 14px; background: var(--border); }
     .footer-links .copy { color: var(--dim); }
 
-    /* ───────── Toast ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Toast â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .toast {
       position: fixed;
       left: 50%;
@@ -612,7 +612,7 @@
     }
     .toast.show { opacity: 1; transform: translate(-50%, 0); }
 
-    /* ───────── Responsive ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     @media (max-width: 960px) {
       .hero { padding: 72px 0 64px; }
       .hero .container { grid-template-columns: 1fr; gap: 48px; }
@@ -640,7 +640,7 @@
       *, *::before, *::after { animation: none !important; transition: none !important; }
     }
 
-    /* ───────── Tip / support the developer ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Tip / support the developer â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .tip-link { display: inline-flex; align-items: center; gap: 6px; }
     .tip-link svg { color: #f43f5e; }
     .tip-card {
@@ -690,7 +690,7 @@
       .tip-actions .btn { width: 100%; }
     }
 
-    /* ───────── Contact menu (Support) ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Contact menu (Support) â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .contact-backdrop {
       position: fixed;
       inset: 0;
@@ -769,7 +769,7 @@
     .ico-app     { background: var(--card-2); border: 1px solid var(--border); color: var(--accent) !important; }
     .ico-copy    { background: var(--card-2); border: 1px solid var(--border); color: var(--accent) !important; }
 
-    /* ───────── Feedback ───────── */
+    /* â”€â”€â”€â”€â”€â”€â”€â”€â”€ Feedback â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .fb-fab {
       position: fixed;
       right: 20px; bottom: 20px;
@@ -846,11 +846,11 @@
 
 <body data-app="home">
 
-  <!-- ───────── Header ───────── -->
+  <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€ Header â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <header class="header">
     <div class="container">
       <!-- Logo = Main/Home tab -->
-      <a href="#" class="brand brand-tab" id="brand" aria-controls="panel-home" aria-selected="true" aria-label="zynaps.site — Home">
+      <a href="#" class="brand brand-tab" id="brand" aria-controls="panel-home" aria-selected="true" aria-label="zynaps.site â€” Home">
         <span class="logo-wrap"><img src="Gemini_Generated_Image_wgi2nnwgi2nnwgi2-Photoroom.jpg" alt="" width="34" height="34" /></span>
         zynaps.site
       </a>
@@ -873,13 +873,13 @@
 
   <main>
 
-    <!-- ═════════ 0. Main / Home — White ═════════ -->
+    <!-- â•â•â•â•â•â•â•â•â• 0. Main / Home â€” White â•â•â•â•â•â•â•â•â• -->
     <div class="panel" id="panel-home" aria-label="Home">
       <section class="hero">
         <div class="container">
           <div>
             <h1 class="fade">Every Synapse app.<span class="accent">One place.</span></h1>
-            <p class="lead fade">zynaps.site is the official home of the Synapse family — a crosshair toolkit and game hub, a precision typing trainer and a modern 3D maps app. Pick your tool and download it in seconds.</p>
+            <p class="lead fade">zynaps.site is the official home of the Synapse family â€” a crosshair toolkit and game hub, a precision typing trainer and a modern 3D maps app. Pick your tool and download it in seconds.</p>
             <div class="hero-actions fade">
               <a class="btn btn-primary btn-lg js-scroll-apps" href="#apps">
                 <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
@@ -893,7 +893,7 @@
             <div class="badges fade">
               <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>3 apps</span>
               <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/></svg>Official downloads</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg>Windows · Android · Web</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg>Windows Â· Android Â· Web</span>
             </div>
           </div>
           <div class="terminal fade" aria-hidden="true">
@@ -901,12 +901,12 @@
 <pre><span class="p">$</span> zynaps list
 <span class="d">Available apps:</span>
 
-  <span class="cx">●</span> Synapse X    <span class="d">crosshair toolkit    </span><span class="cx">v1.8.0</span>
-  <span class="cy">●</span> Synapse Y    <span class="d">typing analytics     </span><span class="cy">v1.2.0</span>
-  <span class="cv">●</span> Synapse M    <span class="d">3D maps &amp; navigation </span><span class="cv">v1.0.0</span>
+  <span class="cx">â—</span> Synapse X    <span class="d">crosshair toolkit    </span><span class="cx">v1.8.0</span>
+  <span class="cy">â—</span> Synapse Y    <span class="d">typing analytics     </span><span class="cy">v1.2.0</span>
+  <span class="cv">â—</span> Synapse M    <span class="d">3D maps &amp; navigation </span><span class="cv">v1.1.0</span>
 
 <span class="p">$</span> zynaps install --all
-<span class="ok">✔ Ready to download</span>
+<span class="ok">âœ” Ready to download</span>
 
 <span class="p">$</span> <span class="cursor"></span></pre>
           </div>
@@ -915,7 +915,7 @@
 
       <div class="strip">
         <div class="container">
-          <span>Synapse X</span><span>Synapse Y</span><span>Synapse M</span><span>Free downloads</span><span>Windows · Android · Web</span>
+          <span>Synapse X</span><span>Synapse Y</span><span>Synapse M</span><span>Free downloads</span><span>Windows Â· Android Â· Web</span>
         </div>
       </div>
 
@@ -969,7 +969,7 @@
             </div>
             <div>
               <h3>Enjoying the Synapse apps?</h3>
-              <p>All Synapse apps are free to download. If they've helped you out, you can leave a tip of any amount to support future updates. It's completely optional — thank you!</p>
+              <p>All Synapse apps are free to download. If they've helped you out, you can leave a tip of any amount to support future updates. It's completely optional â€” thank you!</p>
             </div>
             <div class="tip-actions">
               <a class="btn btn-tip btn-lg js-tip" href="#tip">
@@ -992,7 +992,7 @@
             <article class="card">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg>
               <h3>Official builds</h3>
-              <p>Every installer comes straight from the Synapse team — no third-party mirrors.</p>
+              <p>Every installer comes straight from the Synapse team â€” no third-party mirrors.</p>
             </article>
             <article class="card">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8M21 3v5h-5"/></svg>
@@ -1009,7 +1009,7 @@
       </section>
     </div>
 
-    <!-- ═════════ 1. Synapse X — Orange ═════════ -->
+    <!-- â•â•â•â•â•â•â•â•â• 1. Synapse X â€” Orange â•â•â•â•â•â•â•â•â• -->
     <div class="panel" id="panel-x" role="tabpanel" aria-labelledby="tab-x" hidden>
       <section class="hero">
         <div class="container">
@@ -1060,7 +1060,7 @@
           <div class="section-head">
             <p class="eyebrow">Core features</p>
             <h2>Your crosshair and games, in one hub</h2>
-            <p>Custom reticles, quick game tabs and a clean dashboard — all in Synapse Orange.</p>
+            <p>Custom reticles, quick game tabs and a clean dashboard â€” all in Synapse Orange.</p>
           </div>
           <div class="groups">
             <article class="group">
@@ -1079,7 +1079,7 @@
                 <div><span class="group-num">02</span><h3>Advanced Custom UI &amp; Navigation</h3></div>
               </div>
               <ul>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Collapsible sidebar</h4><p>A smooth, toggleable left sidebar with the Synapse logo and game tabs — collapse it to maximize screen space.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Collapsible sidebar</h4><p>A smooth, toggleable left sidebar with the Synapse logo and game tabs â€” collapse it to maximize screen space.</p></div></li>
                 <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Animated welcome banner</h4><p>A rotating top banner for messages, updates and welcome texts.</p></div></li>
                 <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Grid-based dashboard</h4><p>Clean, equal-sized action buttons laid out in a grid for easy navigation and tool selection.</p></div></li>
               </ul>
@@ -1108,13 +1108,13 @@
       </section>
     </div>
 
-    <!-- ═════════ 2. Synapse Y — Purple ═════════ -->
+    <!-- â•â•â•â•â•â•â•â•â• 2. Synapse Y â€” Purple â•â•â•â•â•â•â•â•â• -->
     <div class="panel" id="panel-y" role="tabpanel" aria-labelledby="tab-y" hidden>
       <section class="hero">
         <div class="container">
           <div>
             <h1 class="fade">Synapse Y<span class="accent">Precision Typing &amp; Speed Analytics Engine</span></h1>
-            <p class="lead fade">Synapse Y is a minimalist, high-performance typing application engineered to boost WPM, improve key accuracy and deliver real-time telemetry — styled in a sleek, high-contrast purple aesthetic.</p>
+            <p class="lead fade">Synapse Y is a minimalist, high-performance typing application engineered to boost WPM, improve key accuracy and deliver real-time telemetry â€” styled in a sleek, high-contrast purple aesthetic.</p>
             <div class="hero-actions fade">
               <a class="btn btn-primary btn-lg js-download" href="downloads/SynapseY-Setup-1.2.0.exe" download>
                 <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
@@ -1139,7 +1139,7 @@
 <span class="d">WPM .................... </span><span class="hl">112</span>
 <span class="d">Raw WPM ................ </span>118
 <span class="d">Accuracy ............... </span><span class="ok">98.4%</span>
-<span class="d">Personal best .......... </span><span class="ok">new record ✔</span>
+<span class="d">Personal best .......... </span><span class="ok">new record âœ”</span>
 <span class="d">Global rank ............ </span><span class="hl">#42</span> <span class="d">(synced)</span>
 
 <span class="p">$</span> <span class="cursor"></span></pre>
@@ -1206,7 +1206,7 @@
       </section>
     </div>
 
-    <!-- ═════════ 3. Synapse M — Blue ═════════ -->
+    <!-- â•â•â•â•â•â•â•â•â• 3. Synapse M â€” Blue â•â•â•â•â•â•â•â•â• -->
     <div class="panel" id="panel-m" role="tabpanel" aria-labelledby="tab-m" hidden>
       <section class="hero">
         <div class="container">
@@ -1226,7 +1226,7 @@
             <div class="badges fade">
               <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg>3D Earth globe</span>
               <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>Android &amp; Web</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>v1.0.0</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>v1.1.0</span>
             </div>
           </div>
           <div class="map-frame fade">
@@ -1294,7 +1294,7 @@
       </section>
     </div>
 
-    <!-- ───────── Shared CTA (follows the selected app) ───────── -->
+    <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€ Shared CTA (follows the selected app) â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
     <section class="cta">
       <div class="container">
         <h2>Ready to get <span class="js-name-plain">Synapse X</span>?</h2>
@@ -1310,7 +1310,7 @@
     </section>
   </main>
 
-  <!-- ───────── Footer ───────── -->
+  <!-- â”€â”€â”€â”€â”€â”€â”€â”€â”€ Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <footer class="footer">
     <div class="container">
       <a href="#" class="brand js-home">
@@ -1326,7 +1326,7 @@
         <a href="#y">Synapse Y</a>
         <a href="#m">Synapse M</a>
         <span class="sep"></span>
-        <span class="copy">© <span id="year">2026</span> zynaps.site</span>
+        <span class="copy">Â© <span id="year">2026</span> zynaps.site</span>
       </div>
     </div>
   </footer>
@@ -1338,7 +1338,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
       </button>
       <h3 id="contact-title">Contact support</h3>
-      <p>Email us at <b>support@zynaps.site</b> — choose how you'd like to write to us.</p>
+      <p>Email us at <b>support@zynaps.site</b> â€” choose how you'd like to write to us.</p>
       <div class="contact-list">
         <a class="contact-opt" id="c-gmail" target="_blank" rel="noopener">
           <span class="ico ico-gmail">G</span><span>Gmail<small>Opens in your browser</small></span>
@@ -1353,7 +1353,7 @@
           <svg class="go" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
         </a>
         <a class="contact-opt" id="c-app">
-          <span class="ico ico-app"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>Default email app<small>Outlook desktop, Mail, Thunderbird…</small></span>
+          <span class="ico ico-app"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span>Default email app<small>Outlook desktop, Mail, Thunderbirdâ€¦</small></span>
         </a>
         <button class="contact-opt" id="c-copy" type="button">
           <span class="ico ico-copy"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg></span><span>Copy email address<small>support@zynaps.site</small></span>
@@ -1384,7 +1384,7 @@
         </button>
       </div>
       <textarea class="fb-field" id="fb-msg" name="message" placeholder="What do you like, or what could be better? Bugs, ideas, anything." maxlength="4000" aria-label="Your feedback"></textarea>
-      <label class="fb-label" for="fb-email">Email (optional — only if you'd like a reply)</label>
+      <label class="fb-label" for="fb-email">Email (optional â€” only if you'd like a reply)</label>
       <input class="fb-field" id="fb-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" />
       <input class="fb-hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
       <p class="fb-note">Your feedback goes straight to the zynaps.site team.</p>
@@ -1403,13 +1403,13 @@
       const APPS = {
         x:   { name: 'Synapse X',  file: 'downloads/SynapseX-Setup-1.8.0.exe',   size: '36 MB',
                cta: 'Your crosshair, your games and your squad in one hub.',
-               notes: 'Synapse X 1.8.0 — new squad section, collapsible sidebar and animated welcome banner.' },
+               notes: 'Synapse X 1.8.0 â€” new squad section, collapsible sidebar and animated welcome banner.' },
         y:   { name: 'Synapse Y',  file: 'downloads/SynapseY-Setup-1.2.0.exe',   size: '22 MB',
                cta: 'Boost your WPM and climb the global leaderboard.',
-               notes: 'Synapse Y 1.2.0 — live WPM tracking, performance history and cloud-synced leaderboards.' },
+               notes: 'Synapse Y 1.2.0 â€” live WPM tracking, performance history and cloud-synced leaderboards.' },
         m:   { name: 'Synapse M',  file: 'https://github.com/DavidTG08/synapse-maps/releases/latest/download/synapse-m.apk', size: 'Android APK',
                cta: 'The whole planet in 3D, and every turn on the way. Free for Android and the web.',
-               notes: 'Synapse M 1.0.0 — 3D Earth globe, turn-by-turn navigation with lane guidance, nearby places and live traffic.' }
+               notes: 'Synapse M 1.0.0 â€” 3D Earth globe, turn-by-turn navigation with lane guidance, nearby places and live traffic.' }
       };
       const HOME = 'home';
       const tabs = Array.from(document.querySelectorAll('.tab'));
@@ -1420,7 +1420,7 @@
 
       function activate(id, opts) {
         opts = opts || {};
-        if (id !== HOME && !APPS[id]) id = HOME;   // unknown or empty → Main tab
+        if (id !== HOME && !APPS[id]) id = HOME;   // unknown or empty â†’ Main tab
         const isHome = id === HOME;
         const app = APPS[id];
 
@@ -1502,7 +1502,7 @@
       if (location.hash === '#vpn') history.replaceState(null, '', '#m');
       window.addEventListener('hashchange', () => activate(location.hash.slice(1)));
 
-      // ───── Tips (Stripe Payment Link) ─────
+      // â”€â”€â”€â”€â”€ Tips (Stripe Payment Link) â”€â”€â”€â”€â”€
       // Paste your Stripe Payment Link here, e.g. 'https://buy.stripe.com/abc123'.
       const TIP_URL = 'https://buy.stripe.com/eVq28r4Wr0Tp95N3R03AY00';
 
@@ -1512,16 +1512,16 @@
           a.target = '_blank';
           a.rel = 'noopener';
         } else {
-          a.addEventListener('click', e => { e.preventDefault(); showToast('Tips are coming soon — thank you for your support!'); });
+          a.addEventListener('click', e => { e.preventDefault(); showToast('Tips are coming soon â€” thank you for your support!'); });
         }
       });
 
       // Stripe can send people back to https://zynaps.site/#thanks after tipping
       if (location.hash === '#thanks') {
-        setTimeout(() => showToast('Thank you so much for your tip! ♥'), 400);
+        setTimeout(() => showToast('Thank you so much for your tip! â™¥'), 400);
       }
 
-      // ───── Contact menu ─────
+      // â”€â”€â”€â”€â”€ Contact menu â”€â”€â”€â”€â”€
       // A website can't tell which email apps a visitor has, so "Support" opens
       // a small menu with webmail links (work without any installed app) plus mailto.
       const SUPPORT = 'support@zynaps.site';
@@ -1530,7 +1530,7 @@
 
       function openContact() {
         const app = APPS[current];
-        const subject = 'Support request' + (app ? ' — ' + app.name : '');
+        const subject = 'Support request' + (app ? ' â€” ' + app.name : '');
         const to = encodeURIComponent(SUPPORT);
         const su = encodeURIComponent(subject);
         document.getElementById('c-gmail').href   = 'https://mail.google.com/mail/?view=cm&fs=1&to=' + to + '&su=' + su;
@@ -1577,10 +1577,10 @@
         done();
       }
 
-      // ───── Feedback ─────
+      // â”€â”€â”€â”€â”€ Feedback â”€â”€â”€â”€â”€
       // GitHub Pages has no server, so FormSubmit (formsubmit.co) emails each
       // submission to SUPPORT. The very first submission sends an "Activate form"
-      // email to SUPPORT — click it once, and every submission after that arrives.
+      // email to SUPPORT â€” click it once, and every submission after that arrives.
       const feedback = document.getElementById('feedback');
       const fbForm = document.getElementById('fb-form');
       const fbMsg = document.getElementById('fb-msg');
@@ -1631,22 +1631,22 @@
         if (fbSubmit.disabled) return;
         if (fbForm._honey.value) { closeFeedback(); resetFeedback(); return; } // bot
         const email = fbEmail.value.trim();
-        if (email && !fbEmail.checkValidity()) { showToast('That email address doesn’t look right.'); fbEmail.focus(); return; }
+        if (email && !fbEmail.checkValidity()) { showToast('That email address doesnâ€™t look right.'); fbEmail.focus(); return; }
 
         const app = APPS[current];
         const data = {
-          _subject: 'New feedback' + (fbRate ? ' (' + fbRate + ')' : '') + ' — zynaps.site',
+          _subject: 'New feedback' + (fbRate ? ' (' + fbRate + ')' : '') + ' â€” zynaps.site',
           _template: 'table',
           _captcha: 'false',
-          Rating: fbRate || '—',
-          Feedback: fbMsg.value.trim() || '—',
+          Rating: fbRate || 'â€”',
+          Feedback: fbMsg.value.trim() || 'â€”',
           Page: app ? app.name : 'Home',
           Browser: navigator.userAgent
         };
         if (email) { data.Email = email; data._replyto = email; }
 
         fbSubmit.disabled = true;
-        fbSubmit.textContent = 'Sending…';
+        fbSubmit.textContent = 'Sendingâ€¦';
         fetch('https://formsubmit.co/ajax/' + SUPPORT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
@@ -1658,12 +1658,12 @@
           .then(() => {
             closeFeedback();
             resetFeedback();
-            showToast('Thanks — your feedback was sent!');
+            showToast('Thanks â€” your feedback was sent!');
           })
           .catch(() => {
             fbSubmit.textContent = 'Submit';
             fbUpdate();
-            showToast('Couldn’t send feedback. Please try again in a moment.');
+            showToast('Couldnâ€™t send feedback. Please try again in a moment.');
           });
       });
 
@@ -1680,7 +1680,7 @@
       document.querySelectorAll('.js-download').forEach(a => a.addEventListener('click', () => {
         const app = APPS[a.dataset.app || current];
         if (!app) return; // header button on Main only scrolls
-        showToast('Starting download: ' + app.name + ' (' + app.size + ')…');
+        showToast('Starting download: ' + app.name + ' (' + app.size + ')â€¦');
       }));
       document.querySelectorAll('.js-notes').forEach(b => b.addEventListener('click', () => showToast(APPS[current].notes)));
 
