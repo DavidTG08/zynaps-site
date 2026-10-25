@@ -8,8 +8,8 @@
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="./assets/index-i1En-_p9.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-CY4QXeqd.css">
+  <script type="module" crossorigin src="./assets/index-FK4H9MCj.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-Bbod18ud.css">
 </head>
 <body>
   <div id="map"></div>
@@ -30,10 +30,12 @@
       <button class="chip glass" data-q="restaurant"><svg viewBox="0 0 24 24"><path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 21V3c-2 1-3 4-3 8h3"/></svg>Restaurants</button>
       <button class="chip glass" data-q="cafe"><svg viewBox="0 0 24 24"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3M12 3v3"/></svg>Coffee</button>
       <button class="chip glass" data-q="fuel"><svg viewBox="0 0 24 24"><path d="M5 21V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v16M3 21h14M5 10h10M15 8l3 3v6a1.5 1.5 0 0 0 3 0V9l-3-3"/></svg>Gas</button>
+      <button class="chip glass" data-q="ev"><svg viewBox="0 0 24 24"><path d="M13 2L5 13.5h6L10 22l8-11.5h-6z"/></svg>Charging</button>
       <button class="chip glass" data-q="supermarket"><svg viewBox="0 0 24 24"><path d="M3 4h2l2.4 11h10.2L20 7H6.2"/><circle cx="9" cy="19.5" r="1.5"/><circle cx="17" cy="19.5" r="1.5"/></svg>Groceries</button>
       <button class="chip glass" data-q="parking"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="4"/><path d="M10 17V8h3a2.5 2.5 0 0 1 0 5h-3"/></svg>Parking</button>
       <button class="chip glass" data-q="hotel"><svg viewBox="0 0 24 24"><path d="M3 19V6M3 15h18v4M21 15v-3a3 3 0 0 0-3-3h-7v6"/><circle cx="7" cy="11" r="2"/></svg>Hotels</button>
     </div>
+    <button class="area-btn glass" id="areaBtn" hidden><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.7M20 4v4h-4"/></svg>Search this area</button>
   </header>
 
   <!-- ============ Map controls ============ -->
@@ -53,13 +55,31 @@
   <section id="sheet" class="glass hidden">
     <div class="grabber"></div>
 
+    <!-- Nearby results list -->
+    <div id="resultsView" class="view" hidden>
+      <div class="head">
+        <div class="head-text">
+          <h2 id="resultsTitle"></h2>
+          <p class="sub" id="resultsSub"></p>
+        </div>
+        <button class="icon-btn round" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="filters" id="resultFilters">
+        <button data-f="open">Open now</button>
+        <button data-f="near">Nearest</button>
+      </div>
+      <div id="resultsList" class="results"></div>
+    </div>
+
     <!-- Place -->
     <div id="placeView" class="view" hidden>
+      <div class="place-photo" id="placePhoto" hidden><img alt="" /></div>
       <div class="head">
         <div class="head-text">
           <h2 id="placeName"></h2>
+          <div class="rating" id="placeRating" hidden></div>
           <p class="sub" id="placeSub"></p>
-          <div class="meta" id="placeMeta"></div>
+          <div class="open-state" id="placeOpen" hidden></div>
         </div>
         <button class="icon-btn round" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
@@ -68,9 +88,14 @@
           <svg viewBox="0 0 24 24"><path d="M12 2.8l9.2 9.2-9.2 9.2L2.8 12z"/><path d="M9 14.5V12a1 1 0 0 1 1-1h4.5M12.8 9l2 2-2 2"/></svg>
           Directions
         </button>
+        <a class="btn" id="callBtn" hidden><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Call</a>
+        <a class="btn" id="webBtn" target="_blank" rel="noopener" hidden><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>Website</a>
         <button class="btn" id="saveBtn"><svg viewBox="0 0 24 24" id="saveIcon"><path d="M6 3h12v18l-6-4-6 4z"/></svg><span id="saveLabel">Save</span></button>
         <button class="btn" id="shareBtn"><svg viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6"/></svg>Share</button>
       </div>
+      <p class="about" id="placeAbout" hidden></p>
+      <div class="info" id="placeInfo"></div>
+      <p class="sources" id="placeSources"></p>
     </div>
 
     <!-- Directions -->
@@ -110,16 +135,46 @@
         <button class="icon-btn round" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
       <div class="type-grid" id="styleGrid">
-        <button data-style="earth"><span class="sw sw-earth"></span>Earth</button>
-        <button data-style="map"><span class="sw sw-map"></span>Map</button>
-        <button data-style="night"><span class="sw sw-night"></span>Night</button>
+        <button data-style="map">
+          <svg class="sw" viewBox="0 0 120 92" preserveAspectRatio="xMidYMid slice">
+            <rect width="120" height="92" fill="#f3f1ec"/>
+            <path d="M0 64c18-6 30 2 46-4s22-20 40-18 24 10 34 8v42H0z" fill="#d9ecd2"/>
+            <circle cx="24" cy="22" r="13" fill="#bfdcf7"/>
+            <path d="M-4 40L124 18" stroke="#fff" stroke-width="9"/><path d="M-4 40L124 18" stroke="#ffd88a" stroke-width="4"/>
+            <path d="M70 -4L58 96" stroke="#fff" stroke-width="6"/>
+            <rect x="80" y="44" width="14" height="12" rx="2" fill="#e3e0da"/><rect x="98" y="48" width="12" height="10" rx="2" fill="#e3e0da"/>
+            <path d="M40 58c0-6 5-10 9-10s9 4 9 10c0 7-9 14-9 14s-9-7-9-14z" fill="#ef4352"/><circle cx="49" cy="58" r="3" fill="#fff"/>
+          </svg>Map</button>
+        <button data-style="night">
+          <svg class="sw" viewBox="0 0 120 92" preserveAspectRatio="xMidYMid slice">
+            <rect width="120" height="92" fill="#141a28"/>
+            <path d="M0 64c18-6 30 2 46-4s22-20 40-18 24 10 34 8v42H0z" fill="#18241f"/>
+            <circle cx="24" cy="22" r="13" fill="#17284a"/>
+            <path d="M-4 40L124 18" stroke="#2c3550" stroke-width="9"/><path d="M-4 40L124 18" stroke="#8a6a32" stroke-width="3"/>
+            <path d="M70 -4L58 96" stroke="#2c3550" stroke-width="6"/>
+            <circle cx="98" cy="18" r="7" fill="#e9e6c9"/><circle cx="101" cy="16" r="6" fill="#141a28"/>
+            <circle cx="86" cy="60" r="1.2" fill="#ffd66b"/><circle cx="92" cy="66" r="1.2" fill="#ffd66b"/><circle cx="100" cy="58" r="1.2" fill="#ffd66b"/>
+          </svg>Night</button>
+        <button data-style="earth">
+          <svg class="sw" viewBox="0 0 120 92" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="skyG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b5aa8"/><stop offset="1" stop-color="#9cc6ee"/></linearGradient>
+              <linearGradient id="mtnG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6e8a5a"/><stop offset="1" stop-color="#2f4a2c"/></linearGradient>
+              <linearGradient id="mtnB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8aa6c4"/><stop offset="1" stop-color="#55708e"/></linearGradient>
+            </defs>
+            <rect width="120" height="92" fill="url(#skyG)"/>
+            <path d="M-4 70L26 34l14 14 22-30 24 30 12-10 30 32v30H-4z" fill="url(#mtnB)"/>
+            <path d="M57 23l5-5 6 8-5-2z M22 39l4-5 5 6-4-1z" fill="#fff" opacity=".9"/>
+            <path d="M-4 92V74l20-14 18 10 22-18 26 20 14-8 28 16v12z" fill="url(#mtnG)"/>
+            <path d="M0 88c26-8 44-2 64-8s34-4 56-2v14H0z" fill="#22381f"/>
+          </svg>Earth</button>
       </div>
       <div class="list">
         <label class="row">
           <span class="row-text"><b>3D terrain</b><small>Mountains and valleys in Earth view</small></span>
           <input type="checkbox" class="switch" id="terrainToggle" />
         </label>
-        <label class="row">
+        <label class="row" id="trafficRow">
           <span class="row-text"><b>Live traffic</b><small id="trafficHint">Traffic flow, closures and incidents</small></span>
           <input type="checkbox" class="switch" id="trafficToggle" />
         </label>
@@ -132,10 +187,6 @@
         <h2>Settings</h2>
         <button class="icon-btn round" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       </div>
-      <label class="field">
-        <span class="row-text"><b>TomTom API key</b><small>Free, optional. Unlocks live traffic, closures, accidents, speed limits and traffic-aware arrival times. Get one without a card at <a href="https://developer.tomtom.com" target="_blank" rel="noopener">developer.tomtom.com</a>.</small></span>
-        <input id="keyInput" placeholder="Paste your key" autocomplete="off" spellcheck="false" />
-      </label>
       <div class="list">
         <label class="row"><span class="row-text"><b>Voice guidance</b></span><input type="checkbox" class="switch" id="voiceToggle" /></label>
         <label class="row"><span class="row-text"><b>Miles instead of km</b></span><input type="checkbox" class="switch" id="imperialToggle" /></label>
@@ -144,7 +195,7 @@
         <button class="btn primary" id="saveSettings">Save</button>
         <button class="btn" id="clearData">Clear saved places</button>
       </div>
-      <p class="about">Synapse M · © OpenStreetMap contributors · OpenFreeMap · Esri imagery · Photon · OSRM</p>
+      <p class="credits">Synapse M · © OpenStreetMap contributors · OpenFreeMap · TomTom · Esri imagery · Photon · OSRM · Wikipedia</p>
     </div>
   </section>
 
@@ -161,18 +212,19 @@
         </div>
         <div class="lanes" id="navLanes" hidden></div>
       </div>
-      <div class="nav-then" id="navThen" hidden><span>Then</span><span id="navThenIcon"></span></div>
+      <div class="nav-row">
+        <div class="speed-bubble" id="speedBox"><b id="curSpeed">0</b><small id="speedUnit">km/h</small></div>
+        <div class="limit" id="limitSign" hidden><span id="limitVal"></span></div>
+        <div class="nav-then" id="navThen" hidden><span>Then</span><span id="navThenIcon"></span></div>
+      </div>
     </div>
+
+    <div class="traffic-bar" id="trafficBar" aria-hidden="true"><span class="car" id="trafficCar"></span></div>
 
     <div class="nav-side">
       <button class="nav-btn glass" id="navTiltBtn" aria-label="2D or 3D"><span class="txt">2D</span></button>
       <button class="nav-btn glass" id="navOverviewBtn" aria-label="Route overview"><svg viewBox="0 0 24 24"><path d="M9 4L3 6.5v13.5L9 17.5l6 2.5 6-2.5V4L15 6.5zM9 4v13.5M15 6.5V20"/></svg></button>
       <button class="nav-btn glass" id="muteBtn" aria-label="Voice"><svg viewBox="0 0 24 24"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z"/><path id="muteWaves" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11"/></svg></button>
-    </div>
-
-    <div class="speed" id="speedBox">
-      <div class="limit" id="limitSign" hidden><span id="limitVal"></span></div>
-      <div class="cur glass"><b id="curSpeed">0</b><small id="speedUnit">km/h</small></div>
     </div>
 
     <div class="road-pill glass" id="roadPill" hidden></div>
