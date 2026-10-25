@@ -8,8 +8,8 @@
   <link rel="icon" href="./icon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script type="module" crossorigin src="./assets/index-BIiM0Ixa.js"></script>
-  <link rel="stylesheet" crossorigin href="./assets/index-C0tiX9H1.css">
+  <script type="module" crossorigin src="./assets/index-Ci8Wgnm8.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DrFbwrsa.css">
 </head>
 <body>
   <div id="map"></div>
@@ -17,7 +17,7 @@
   <!-- ============ Search ============ -->
   <header id="topbar">
     <div class="searchbox glass" id="searchbox">
-      <div class="logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 16V8l5 4.5L17 8v8"/></svg></div>
+      <button class="logo" id="profileBtn" aria-label="Your profile"><svg viewBox="0 0 24 24"><path d="M7 16V8l5 4.5L17 8v8"/></svg></button>
       <input id="search" type="search" placeholder="Search places and addresses" autocomplete="off" enterkeyhint="search" />
       <button class="icon-btn" id="clearSearch" hidden aria-label="Clear"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
       <span class="sep"></span>
@@ -175,6 +175,37 @@
           <span class="row-text"><b>Live traffic</b><small id="trafficHint">Traffic flow, closures and incidents</small></span>
           <input type="checkbox" class="switch" id="trafficToggle" />
         </label>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div id="profileView" class="view" hidden>
+      <div class="head">
+        <div class="profile-id">
+          <div class="avatar" id="avatar">M</div>
+          <div class="head-text">
+            <input id="profileName" class="name-input" placeholder="Your name" maxlength="30" autocomplete="off" />
+            <p class="sub">Synapse M explorer</p>
+          </div>
+        </div>
+        <button class="icon-btn round" data-close aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      </div>
+      <div class="stats">
+        <div><b id="statKm">0</b><small>km driven</small></div>
+        <div><b id="statTrips">0</b><small>trips</small></div>
+        <div><b id="statSaved">0</b><small>saved places</small></div>
+      </div>
+      <h3 class="section-title">Navigation cursor</h3>
+      <div class="cursor-preview">
+        <canvas id="cursorPreview"></canvas>
+        <div class="arrow-preview" id="arrowPreview" hidden></div>
+        <span class="preview-name" id="previewName"></span>
+      </div>
+      <div class="cursor-grid" id="cursorGrid"></div>
+      <h3 class="section-title" id="colorTitle">Color</h3>
+      <div class="swatches" id="colorGrid"></div>
+      <div class="list">
+        <button class="row" id="openSettings"><span class="row-text"><b>Settings</b><small>Voice guidance, units, saved places</small></span><svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button>
       </div>
     </div>
 
