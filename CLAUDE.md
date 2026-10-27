@@ -19,7 +19,7 @@ Download hub for three apps: **Synapse X**, **Synapse Y** and **SynapseVPN**.
   - home = silver (`--silver: #c4c9d1`), x = orange, y = purple, vpn = blue.
 - All text uses `--silver` (no pure white). The logo has a subtle rotating multi-color glow (`.logo-wrap::before`).
 - App details (download file, size, release note, CTA text) live in the `APPS` object in the script. Synapse X / Y installer files are placeholders under `downloads/` and don't exist yet.
-- **SynapseVPN downloads are live**: the script asks the GitHub API for the newest release of `DavidTG08/SynapseVPN` and points every `.js-vpn-file` link at its `.exe` (version shown in `.js-vpn-version`). No site change is needed when a new SynapseVPN version is published. Falls back to the releases page.
+- **SynapseVPN downloads are live**: the script asks the GitHub API for the newest release of `DavidTG08/SynapseVPN-releases` (public, installers only; the code repo may be private) and points every `.js-vpn-file` link at its `.exe` (version shown in `.js-vpn-version`). No site change is needed when a new SynapseVPN version is published. Falls back to the releases page.
 - Synapse M (maps) was removed on 2026-10-27 at the owner's request; don't bring back the `/maps` app or the Synapse M tab.
 - "Feedback" (floating bottom-right button + footer link) opens a dialog (Good/Bad, message, optional email) that emails `support@zynaps.site` via FormSubmit (`formsubmit.co/ajax/...`). FormSubmit needs a one-time "Activate" click in the first email it sends to that address.
 - "Support" links open a contact menu (Gmail, Outlook, Yahoo, default app, copy address) for `support@zynaps.site`.
