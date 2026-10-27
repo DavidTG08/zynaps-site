@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>zynaps.site — Downloads</title>
-  <meta name="description" content="Download Synapse X, Synapse Y and Synapse M." />
+  <meta name="description" content="Download Synapse X, Synapse Y and SynapseVPN." />
   <link rel="icon" href="Gemini_Generated_Image_wgi2nnwgi2nnwgi2-Photoroom.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -52,18 +52,11 @@
       --accent: #a855f7; --accent-2: #d946ef; --accent-hover: #9333ea;
       --accent-soft: rgba(168,85,247,.13); --accent-line: rgba(168,85,247,.38); --glow: rgba(168,85,247,.45);
     }
-    /* Synapse M — Blue */
-    body[data-app="m"] {
-      --accent: #4f7cff; --accent-2: #a34fff; --accent-hover: #3d63e6;
-      --accent-soft: rgba(79,124,255,.13); --accent-line: rgba(79,124,255,.38); --glow: rgba(79,124,255,.45);
+    /* SynapseVPN — Blue */
+    body[data-app="vpn"] {
+      --accent: #3b82f6; --accent-2: #22d3ee; --accent-hover: #2563eb;
+      --accent-soft: rgba(59,130,246,.13); --accent-line: rgba(59,130,246,.38); --glow: rgba(59,130,246,.45);
     }
-    /* Live Synapse M preview in the hero */
-    .map-frame {
-      position: relative; width: 100%; aspect-ratio: 4 / 5; max-height: 560px;
-      border: 1px solid var(--border); border-radius: 16px; overflow: hidden; background: #02040a;
-      box-shadow: 0 30px 80px -30px var(--glow);
-    }
-    .map-frame iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
@@ -229,7 +222,7 @@
     .app-card .btn-dl:hover { border-color: var(--c); }
     .terminal .cx { color: #f97316; }
     .terminal .cy { color: #a855f7; }
-    .terminal .cv { color: #4f7cff; }
+    .terminal .cv { color: #3b82f6; }
     body[data-app="home"] .cta { display: none; }
 
     /* App tabs: tagline sits under the app name, a bit smaller */
@@ -858,7 +851,7 @@
       <nav class="tabs" role="tablist" aria-label="Apps">
         <button class="tab" role="tab" id="tab-x"   aria-controls="panel-x"   aria-selected="false" tabindex="-1" data-app="x">Synapse X</button>
         <button class="tab" role="tab" id="tab-y"   aria-controls="panel-y"   aria-selected="false" tabindex="-1" data-app="y">Synapse Y</button>
-        <button class="tab" role="tab" id="tab-m" aria-controls="panel-m" aria-selected="false" tabindex="-1" data-app="m">Synapse M</button>
+        <button class="tab" role="tab" id="tab-vpn" aria-controls="panel-vpn" aria-selected="false" tabindex="-1" data-app="vpn">SynapseVPN</button>
       </nav>
 
       <div class="header-right">
@@ -879,7 +872,7 @@
         <div class="container">
           <div>
             <h1 class="fade">Every Synapse app.<span class="accent">One place.</span></h1>
-            <p class="lead fade">zynaps.site is the official home of the Synapse family — a crosshair toolkit and game hub, a precision typing trainer and a modern 3D maps app. Pick your tool and download it in seconds.</p>
+            <p class="lead fade">zynaps.site is the official home of the Synapse family — a crosshair toolkit and game hub, a precision typing trainer and a secure WireGuard VPN. Pick your tool and download it in seconds.</p>
             <div class="hero-actions fade">
               <a class="btn btn-primary btn-lg js-scroll-apps" href="#apps">
                 <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
@@ -893,7 +886,7 @@
             <div class="badges fade">
               <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>3 apps</span>
               <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/></svg>Official downloads</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg>Windows · Android · Web</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8"/></svg>Windows 10 / 11</span>
             </div>
           </div>
           <div class="terminal fade" aria-hidden="true">
@@ -903,7 +896,7 @@
 
   <span class="cx">●</span> Synapse X    <span class="d">crosshair toolkit    </span><span class="cx">v1.8.0</span>
   <span class="cy">●</span> Synapse Y    <span class="d">typing analytics     </span><span class="cy">v1.2.0</span>
-  <span class="cv">●</span> Synapse M    <span class="d">3D maps &amp; navigation </span><span class="cv">v1.3.0</span>
+  <span class="cv">●</span> SynapseVPN   <span class="d">WireGuard VPN        </span><span class="cv js-vpn-version">v1.8.0</span>
 
 <span class="p">$</span> zynaps install --all
 <span class="ok">✔ Ready to download</span>
@@ -915,7 +908,7 @@
 
       <div class="strip">
         <div class="container">
-          <span>Synapse X</span><span>Synapse Y</span><span>Synapse M</span><span>Free downloads</span><span>Windows · Android · Web</span>
+          <span>Synapse X</span><span>Synapse Y</span><span>SynapseVPN</span><span>Free downloads</span><span>Windows 10 / 11</span>
         </div>
       </div>
 
@@ -947,14 +940,14 @@
                 <a class="btn btn-dl js-download" data-app="y" href="downloads/SynapseY-Setup-1.2.0.exe" download aria-label="Download Synapse Y"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
               </div>
             </article>
-            <article class="app-card" style="--c:#4f7cff; --c2:#a34fff; --c3:#3d63e6">
-              <div class="app-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
-              <p class="tag">3D maps &amp; navigation</p>
-              <h3>Synapse M</h3>
-              <p>A modern maps app with a 3D Earth globe, turn-by-turn navigation, live traffic and nearby places. Runs in your browser and on Android.</p>
+            <article class="app-card" style="--c:#3b82f6; --c2:#22d3ee; --c3:#2563eb">
+              <div class="app-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></div>
+              <p class="tag">Secure networking &amp; identity protection</p>
+              <h3>SynapseVPN</h3>
+              <p>A free one-click VPN on WireGuard and Cloudflare WARP, with threat protection, encrypted Meshnet file sharing and a Dark Web Monitor.</p>
               <div class="row">
-                <button class="btn btn-app js-goto" type="button" data-target="m">Explore Synapse M</button>
-                <a class="btn btn-dl js-download" data-app="m" href="https://github.com/DavidTG08/synapse-maps/releases/latest/download/synapse-m.apk" aria-label="Download Synapse M for Android"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+                <button class="btn btn-app js-goto" type="button" data-target="vpn">Explore SynapseVPN</button>
+                <a class="btn btn-dl js-download js-vpn-file" data-app="vpn" href="https://github.com/DavidTG08/SynapseVPN/releases/latest" aria-label="Download SynapseVPN"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
               </div>
             </article>
           </div>
@@ -1206,38 +1199,48 @@
       </section>
     </div>
 
-    <!-- ═════════ 3. Synapse M — Blue ═════════ -->
-    <div class="panel" id="panel-m" role="tabpanel" aria-labelledby="tab-m" hidden>
+    <!-- ═════════ 3. SynapseVPN — Blue ═════════ -->
+    <div class="panel" id="panel-vpn" role="tabpanel" aria-labelledby="tab-vpn" hidden>
       <section class="hero">
         <div class="container">
           <div>
-            <h1 class="fade">Synapse M<span class="accent">Modern 3D Maps &amp; Navigation</span></h1>
-            <p class="lead fade">Synapse M is a modern maps app built around a 3D Earth globe. Search any place, get driving, cycling and walking routes, and follow smooth turn-by-turn navigation with lane guidance and live traffic. Use it right here in your browser or install it on Android.</p>
+            <h1 class="fade">SynapseVPN<span class="accent">Secure Networking &amp; Identity Protection</span></h1>
+            <p class="lead fade">SynapseVPN is a free VPN and security app for Windows. Connect in one click over WireGuard and Cloudflare WARP, block dangerous sites, trackers and ads, share files between your own PCs, and find out if your accounts were leaked. Nothing extra to install.</p>
             <div class="hero-actions fade">
-              <a class="btn btn-primary btn-lg" href="maps/" target="_blank" rel="noopener">
-                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
-                Open web app
+              <a class="btn btn-primary btn-lg js-download js-vpn-file" data-app="vpn" href="https://github.com/DavidTG08/SynapseVPN/releases/latest">
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+                Download SynapseVPN
               </a>
-              <a class="btn btn-secondary btn-lg js-download" data-app="m" href="https://github.com/DavidTG08/synapse-maps/releases/latest/download/synapse-m.apk">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
-                Download for Android
-              </a>
+              <button class="btn btn-secondary btn-lg js-notes" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+                Release notes
+              </button>
             </div>
             <div class="badges fade">
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/></svg>3D Earth globe</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/></svg>Android &amp; Web</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>v1.3.0</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>WireGuard</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Dark Web Monitor</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg><span class="js-vpn-version">v1.8.0</span></span>
             </div>
           </div>
-          <div class="map-frame fade">
-            <iframe src="maps/" title="Synapse M live map" loading="lazy" allow="geolocation; fullscreen"></iframe>
+          <div class="terminal fade" aria-hidden="true">
+            <div class="terminal-bar"><i></i><i></i><i></i><small>synapsevpn</small></div>
+<pre><span class="p">$</span> synapsevpn connect
+<span class="d">Network ............ </span>Cloudflare WARP
+<span class="d">Protocol ........... </span>WireGuard
+<span class="ok">● Protected</span>  <span class="d">ping</span> <span class="hl">14 ms</span>
+
+<span class="d">Threat protection .. </span><span class="ok">on</span> <span class="d">· 385,000 blocked sites</span>
+<span class="d">Meshnet ............ </span>2 devices linked
+<span class="d">Dark Web Monitor ... </span>1 email · <span class="ok">no open leaks</span>
+
+<span class="p">$</span> <span class="cursor"></span></pre>
           </div>
         </div>
       </section>
 
       <div class="strip">
         <div class="container">
-          <span>3D Earth globe</span><span>Turn-by-turn navigation</span><span>Lane guidance</span><span>Live traffic</span><span>Free, no account</span>
+          <span>WireGuard</span><span>Cloudflare WARP</span><span>Threat protection</span><span>Meshnet</span><span>Dark Web Monitor</span><span>Free</span>
         </div>
       </div>
 
@@ -1245,48 +1248,48 @@
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Core features</p>
-            <h2>The whole planet. Every turn.</h2>
-            <p>A Google Earth-style globe and a full navigation app in one clean, fast interface.</p>
+            <h2>One click. Fully protected.</h2>
+            <p>A fast VPN, threat protection, private file sharing and breach alerts in one clean Windows app.</p>
           </div>
           <div class="groups">
             <article class="group">
               <div class="group-head">
-                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
-                <div><span class="group-num">01</span><h3>3D Earth View</h3></div>
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg></div>
+                <div><span class="group-num">01</span><h3>One-Click VPN</h3></div>
               </div>
               <ul>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Satellite globe</h4><p>Spin the whole planet in high-resolution satellite imagery with a glowing atmosphere, then fly straight down to street level.</p></div></li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Real 3D terrain</h4><p>Tilt the map to see mountains and valleys rise up, or switch to the clean Map and Night styles with 3D buildings.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>WireGuard on Cloudflare WARP</h4><p>Fast, encrypted and free. Your traffic leaves through Cloudflare's network, with low ping for gaming and streaming.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Works on strict networks</h4><p>One admin prompt the first time, then just click Connect. If a network like school Wi-Fi blocks the usual port, SynapseVPN finds one that works.</p></div></li>
               </ul>
             </article>
             <article class="group">
               <div class="group-head">
-                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8z"/></svg></div>
-                <div><span class="group-num">02</span><h3>Turn-by-Turn Navigation</h3></div>
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.4 8.3 8 9 4.6-.7 8-4 8-9V6z"/><path d="M12 8v4m0 4h.01"/></svg></div>
+                <div><span class="group-num">02</span><h3>Threat Protection</h3></div>
               </div>
               <ul>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Smooth 3D guidance</h4><p>A tilted 3D view that glides with you, big turn cards, lane arrows, voice directions and automatic rerouting.</p></div></li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Speed &amp; arrival</h4><p>Your speed, the road's speed limit, the street you're on, arrival time and a Preview Drive mode to try any route first.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Blocks dangerous sites, trackers and ads</h4><p>About 385,000 malware, phishing, tracker and ad addresses from trusted open lists, updated every day, in every app and browser.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>File scans and a security check-up</h4><p>New downloads are scanned with Microsoft Defender, copied links lose their tracking parts, and a check-up finds weak spots and outdated apps.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="18" r="2.5"/><circle cx="19" cy="18" r="2.5"/><path d="m10.7 7.2-4.4 8.6m7-8.6 4.4 8.6M7.5 18h9"/></svg></div>
+                <div><span class="group-num">03</span><h3>Meshnet &amp; File Transfers</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Link your own computers</h4><p>Pair two PCs on the same network with a short code. They reach each other over an encrypted WireGuard link.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Send files directly</h4><p>Drag files onto a linked PC. They go straight there, never through a server, and are checked when they arrive.</p></div></li>
               </ul>
             </article>
             <article class="group">
               <div class="group-head">
                 <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg></div>
-                <div><span class="group-num">03</span><h3>Search &amp; Places</h3></div>
+                <div><span class="group-num">04</span><h3>Dark Web Monitor</h3></div>
               </div>
               <ul>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Instant search</h4><p>Find addresses, businesses and landmarks as you type. Save favourites, revisit recent places and share any spot.</p></div></li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Nearby in one tap</h4><p>Restaurants, coffee, gas, groceries, parking and hotels around you, with opening hours and contact details.</p></div></li>
-              </ul>
-            </article>
-            <article class="group">
-              <div class="group-head">
-                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2.5" width="8" height="19" rx="4"/><circle cx="12" cy="7.5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="16.5" r="1"/></svg></div>
-                <div><span class="group-num">04</span><h3>Live Traffic</h3></div>
-              </div>
-              <ul>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Traffic &amp; closures</h4><p>See traffic flow, road closures and accidents on the map, with arrival times that include current delays.</p></div></li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Free &amp; private</h4><p>No account and no ads. Your saved places stay on your own device.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Breach alerts for your emails</h4><p>Your emails are checked against known data breaches every day, with a notification when a new one appears and what leaked.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Private password check</h4><p>See if a password has leaked before. The password itself never leaves your PC.</p></div></li>
               </ul>
             </article>
           </div>
@@ -1324,7 +1327,7 @@
         <a href="#feedback" class="js-feedback">Feedback</a>
         <a href="#x">Synapse X</a>
         <a href="#y">Synapse Y</a>
-        <a href="#m">Synapse M</a>
+        <a href="#vpn">SynapseVPN</a>
         <span class="sep"></span>
         <span class="copy">© <span id="year">2026</span> zynaps.site</span>
       </div>
@@ -1407,10 +1410,31 @@
         y:   { name: 'Synapse Y',  file: 'downloads/SynapseY-Setup-1.2.0.exe',   size: '22 MB',
                cta: 'Boost your WPM and climb the global leaderboard.',
                notes: 'Synapse Y 1.2.0 — live WPM tracking, performance history and cloud-synced leaderboards.' },
-        m:   { name: 'Synapse M',  file: 'https://github.com/DavidTG08/synapse-maps/releases/latest/download/synapse-m.apk', size: 'Android APK',
-               cta: 'The whole planet in 3D, and every turn on the way. Free for Android and the web.',
-               notes: 'Synapse M 1.3.0 — real lane guidance at junctions, your route drawn in the right lane, and 3D vehicle cursors in your new profile.' }
+        // file, size and notes are filled in from the newest GitHub release (see below).
+        vpn: { name: 'SynapseVPN', file: 'https://github.com/DavidTG08/SynapseVPN/releases/latest', size: 'Windows installer',
+               cta: 'One-click VPN, threat protection and breach alerts. Free for Windows 10 / 11.',
+               notes: 'SynapseVPN — see the latest release notes on GitHub.' }
       };
+
+      // SynapseVPN: always link the newest installer from GitHub Releases.
+      fetch('https://api.github.com/repos/DavidTG08/SynapseVPN/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+        .then(r => r.ok ? r.json() : Promise.reject(r.status))
+        .then(release => {
+          const exe = (release.assets || []).find(a => /\.exe$/i.test(a.name));
+          if (!exe) return;
+          const version = String(release.tag_name || '').replace(/^v/, '');
+          APPS.vpn.file = exe.browser_download_url;
+          APPS.vpn.size = Math.round(exe.size / 1e6) + ' MB';
+          const firstNote = String(release.body || '').split('\n').map(l => l.replace(/^[-*]\s*/, '').trim()).filter(Boolean)[0];
+          APPS.vpn.notes = 'SynapseVPN ' + version + (firstNote ? ' — ' + firstNote : '');
+          document.querySelectorAll('.js-vpn-file').forEach(a => a.href = exe.browser_download_url);
+          document.querySelectorAll('.js-vpn-version').forEach(el => el.textContent = 'v' + version);
+          if (current === 'vpn') {
+            headerBtn.href = exe.browser_download_url;
+            document.querySelectorAll('.cta .js-download').forEach(a => a.href = exe.browser_download_url);
+          }
+        })
+        .catch(() => { /* keep the link to the releases page */ });
       const HOME = 'home';
       const tabs = Array.from(document.querySelectorAll('.tab'));
       const panels = Array.from(document.querySelectorAll('.panel'));
@@ -1463,7 +1487,7 @@
         if (current !== null && !opts.keepScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
         current = id;
 
-        // Main tab has a clean URL; apps use #x, #y, #m
+        // Main tab has a clean URL; apps use #x, #y, #vpn
         const url = isHome ? location.pathname + location.search : '#' + id;
         if ((isHome && location.hash) || (!isHome && location.hash !== '#' + id)) history.replaceState(null, '', url);
       }
@@ -1498,8 +1522,7 @@
         if (n !== null) { e.preventDefault(); activate(tabs[n].dataset.app, { focus: true }); }
       });
 
-      // Links like #x, #y, #m (footer, shared URLs). Old #vpn links now open Synapse M.
-      if (location.hash === '#vpn') history.replaceState(null, '', '#m');
+      // Links like #x, #y, #vpn (footer, shared URLs)
       window.addEventListener('hashchange', () => activate(location.hash.slice(1)));
 
       // ───── Tips (Stripe Payment Link) ─────
