@@ -894,7 +894,7 @@
 <pre><span class="p">$</span> zynaps list
 <span class="d">Available apps:</span>
 
-  <span class="cx">●</span> Synapse X    <span class="d">crosshair toolkit    </span><span class="cx">v1.8.0</span>
+  <span class="cx">●</span> Synapse X    <span class="d">crosshairs + cursors </span><span class="cx js-x-version">v2.0.0</span>
   <span class="cy">●</span> Synapse Y    <span class="d">typing analytics     </span><span class="cy">v1.2.0</span>
   <span class="cv">●</span> SynapseVPN   <span class="d">WireGuard VPN        </span><span class="cv js-vpn-version">v1.8.0</span>
 
@@ -922,12 +922,12 @@
           <div class="apps-grid">
             <article class="app-card" style="--c:#f97316; --c2:#fbbf24; --c3:#ea580c">
               <div class="app-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg></div>
-              <p class="tag">Desktop utility &amp; crosshair toolkit</p>
+              <p class="tag">Crosshair overlay &amp; custom cursors</p>
               <h3>Synapse X</h3>
-              <p>A custom crosshair overlay and game hub with quick tabs for Roblox, Fortnite, Counter-Strike and Minecraft, plus a squad section.</p>
+              <p>A click-through crosshair overlay plus 1,100+ editable mouse cursors, share codes for friends and Discord sign-in.</p>
               <div class="row">
                 <button class="btn btn-app js-goto" type="button" data-target="x">Explore Synapse X</button>
-                <a class="btn btn-dl js-download" data-app="x" href="downloads/SynapseX-Setup-1.8.0.exe" download aria-label="Download Synapse X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+                <a class="btn btn-dl js-download js-x-file" data-app="x" href="https://github.com/DavidTG08/SynapseX-releases/releases/latest" aria-label="Download Synapse X"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
               </div>
             </article>
             <article class="app-card" style="--c:#a855f7; --c2:#d946ef; --c3:#9333ea">
@@ -1007,10 +1007,10 @@
       <section class="hero">
         <div class="container">
           <div>
-            <h1 class="fade">Synapse X<span class="accent">The Ultimate Desktop Utility &amp; Crosshair Toolkit</span></h1>
-            <p class="lead fade">Synapse X is a sleek, Electron-based desktop utility featuring a fully customizable crosshair overlay toolkit and a dedicated game selection hub for your favorite titles.</p>
+            <h1 class="fade">Synapse X<span class="accent">Crosshair Overlay &amp; 1,100+ Custom Cursors</span></h1>
+            <p class="lead fade">Put a pixel-perfect crosshair on top of any game, and turn your Windows mouse pointer into one of 1,100+ cursors you can fully edit. Sign in with Discord to bring your name, avatar and avatar decoration along.</p>
             <div class="hero-actions fade">
-              <a class="btn btn-primary btn-lg js-download" href="downloads/SynapseX-Setup-1.8.0.exe" download>
+              <a class="btn btn-primary btn-lg js-download js-x-file" href="https://github.com/DavidTG08/SynapseX-releases/releases/latest">
                 <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
                 Download Synapse X
               </a>
@@ -1021,8 +1021,8 @@
             </div>
             <div class="badges fade">
               <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/></svg>Crosshair toolkit</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="10" rx="4"/><path d="M7 12h3M8.5 10.5v3"/></svg>Game hub</span>
-              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg>v1.8.0</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M5 3l14 7-6 2-2 6z"/></svg>1,100+ cursors</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg><span class="js-x-version">v2.0.0</span></span>
             </div>
           </div>
           <div class="terminal fade" aria-hidden="true">
@@ -1031,11 +1031,13 @@
 <span class="d">Loading dashboard ...... </span><span class="ok">ready</span>
 <span class="d">Welcome banner ......... </span><span class="hl">"Welcome back!"</span>
 
-<span class="p">$</span> synapse-x select --game counter-strike
-<span class="d">Game tab ............... </span>Counter-Strike
+<span class="p">$</span> synapse-x crosshair --equip "Pink Gang"
 <span class="d">Crosshair overlay ...... </span><span class="ok">on</span>
-<span class="d">Sidebar ................ </span>collapsed
-<span class="d">Squad .................. </span><span class="ok">4 online</span>
+<span class="d">Position ............... </span>exact center
+
+<span class="p">$</span> synapse-x cursor --use "Neon Cyan Sword"
+<span class="d">Library ................ </span><span class="hl">1,147 cursors</span>
+<span class="d">Windows pointer ........ </span><span class="ok">updated</span>
 
 <span class="p">$</span> <span class="cursor"></span></pre>
           </div>
@@ -1044,7 +1046,7 @@
 
       <div class="strip">
         <div class="container">
-          <span>Roblox</span><span>Fortnite</span><span>Counter-Strike</span><span>Minecraft</span><span>Crosshair overlay</span>
+          <span>Crosshair overlay</span><span>1,100+ cursors</span><span>Cursor editor</span><span>Discord sign-in</span><span>Share codes</span>
         </div>
       </div>
 
@@ -1052,38 +1054,39 @@
         <div class="container">
           <div class="section-head">
             <p class="eyebrow">Core features</p>
-            <h2>Your crosshair and games, in one hub</h2>
-            <p>Custom reticles, quick game tabs and a clean dashboard — all in Synapse Orange.</p>
+            <h2>Your crosshair and your cursor, in one app</h2>
+            <p>Design it, save it, share it, and use it everywhere. All in Synapse Orange.</p>
           </div>
           <div class="groups">
             <article class="group">
               <div class="group-head">
                 <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 2v4M12 18v4M2 12h4M18 12h4"/><circle cx="12" cy="12" r="1.2"/></svg></div>
-                <div><span class="group-num">01</span><h3>Crosshair Toolkit &amp; Game Hub</h3></div>
+                <div><span class="group-num">01</span><h3>Crosshair Overlay</h3></div>
               </div>
               <ul>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Game-specific tabs</h4><p>A dedicated selection sidebar with instant-access tabs for Roblox, Fortnite, Counter-Strike and Minecraft.</p></div></li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Crosshair overlay</h4><p>A built-in crosshair toolkit that gives you custom reticles for competitive gaming.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Pixel-perfect and click-through</h4><p>Lines, gap, thickness, center dot, circle, outline and T-shape, drawn at the exact center of your screen. Clicks go straight to your game.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Designer, library and hotkeys</h4><p>20 built-in crosshairs by game, a live designer, and global hotkeys to show, hide and switch crosshairs in-game.</p></div></li>
               </ul>
             </article>
             <article class="group">
               <div class="group-head">
                 <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M9 4v16M13 9h4M13 13h4"/></svg></div>
-                <div><span class="group-num">02</span><h3>Advanced Custom UI &amp; Navigation</h3></div>
+                <div><span class="group-num">02</span><h3>1,100+ Custom Cursors</h3></div>
               </div>
               <ul>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Collapsible sidebar</h4><p>A smooth, toggleable left sidebar with the Synapse logo and game tabs — collapse it to maximize screen space.</p></div></li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Animated welcome banner</h4><p>A rotating top banner for messages, updates and welcome texts.</p></div></li>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Grid-based dashboard</h4><p>Clean, equal-sized action buttons laid out in a grid for easy navigation and tool selection.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Click to use</h4><p>37 original shapes in 31 color themes, from classic arrows to swords, rockets and retro pixel art. One click makes it your Windows pointer.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Edit everything</h4><p>Colors, outline, size, opacity, gradient, glow, shadow, pixel style and a left-handed mode, with a live test area.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Restore any time</h4><p>Your original Windows cursor is remembered and comes back with one click.</p></div></li>
               </ul>
             </article>
             <article class="group">
               <div class="group-head">
                 <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7M18 14a6.5 6.5 0 0 1 3.5 6"/></svg></div>
-                <div><span class="group-num">03</span><h3>Social &amp; Community Integration</h3></div>
+                <div><span class="group-num">03</span><h3>Accounts &amp; Sharing</h3></div>
               </div>
               <ul>
-                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Squad section</h4><p>A dedicated social area built into the dashboard to manage and view your gaming squad.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Sign in with Discord</h4><p>Your Discord name, avatar and avatar decoration show up in Synapse X.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Share codes and squad</h4><p>Send any crosshair or cursor as a short code, and keep your friends’ crosshairs one click away.</p></div></li>
               </ul>
             </article>
             <article class="group">
@@ -1303,7 +1306,7 @@
         <h2>Ready to get <span class="js-name-plain">Synapse X</span>?</h2>
         <p class="js-cta-text">Free to download. Up and running in under a minute.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary btn-lg js-download" href="downloads/SynapseX-Setup-1.8.0.exe" download>
+          <a class="btn btn-primary btn-lg js-download" href="https://github.com/DavidTG08/SynapseX-releases/releases/latest">
             <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
             Download now
           </a>
@@ -1404,9 +1407,10 @@
     (function () {
       // App details in tab order. Edit file paths, sizes and notes here.
       const APPS = {
-        x:   { name: 'Synapse X',  file: 'downloads/SynapseX-Setup-1.8.0.exe',   size: '36 MB',
-               cta: 'Your crosshair, your games and your squad in one hub.',
-               notes: 'Synapse X 1.8.0 — new squad section, collapsible sidebar and animated welcome banner.' },
+        // file, size and notes are filled in from the newest GitHub release (see below).
+        x:   { name: 'Synapse X',  file: 'https://github.com/DavidTG08/SynapseX-releases/releases/latest',   size: 'Windows installer',
+               cta: 'A pixel-perfect crosshair and 1,100+ custom cursors. Free for Windows 10 / 11.',
+               notes: 'Synapse X 2.0.0 — 1,100+ editable cursors, Discord sign-in, and a crosshair that works everywhere.' },
         y:   { name: 'Synapse Y',  file: 'downloads/SynapseY-Setup-1.2.0.exe',   size: '22 MB',
                cta: 'Boost your WPM and climb the global leaderboard.',
                notes: 'Synapse Y 1.2.0 — live WPM tracking, performance history and cloud-synced leaderboards.' },
@@ -1415,6 +1419,26 @@
                cta: 'One-click VPN, threat protection and breach alerts. Free for Windows 10 / 11.',
                notes: 'SynapseVPN — see the latest release notes on GitHub.' }
       };
+
+      // Synapse X: always link the newest installer from GitHub Releases.
+      fetch('https://api.github.com/repos/DavidTG08/SynapseX-releases/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+        .then(r => r.ok ? r.json() : Promise.reject(r.status))
+        .then(release => {
+          const exe = (release.assets || []).find(a => /\.exe$/i.test(a.name));
+          if (!exe) return;
+          const version = String(release.tag_name || '').replace(/^v/, '');
+          APPS.x.file = exe.browser_download_url;
+          APPS.x.size = Math.round(exe.size / 1e6) + ' MB';
+          const firstNote = String(release.body || '').split('\n').map(l => l.replace(/^[-*#]\s*/, '').trim()).filter(Boolean)[0];
+          APPS.x.notes = 'Synapse X ' + version + (firstNote ? ' — ' + firstNote : '');
+          document.querySelectorAll('.js-x-file').forEach(a => a.href = exe.browser_download_url);
+          document.querySelectorAll('.js-x-version').forEach(el => el.textContent = 'v' + version);
+          if (current === 'x') {
+            headerBtn.href = exe.browser_download_url;
+            document.querySelectorAll('.cta .js-download').forEach(a => a.href = exe.browser_download_url);
+          }
+        })
+        .catch(() => { /* keep the link to the releases page */ });
 
       // SynapseVPN: always link the newest installer from GitHub Releases.
       fetch('https://api.github.com/repos/DavidTG08/SynapseVPN-releases/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
