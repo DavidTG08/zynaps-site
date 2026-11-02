@@ -3,7 +3,8 @@
 Download hub for three apps: **Synapse X**, **Synapse Y** and **SynapseVPN**.
 
 ## How it's built
-- One static page: `index.html` (HTML, CSS and JS in one file). No build step.
+- One static page: `index.html` (HTML + CSS) and `site.js` (all page JS). No build step.
+- When you change `site.js`, bump the `?v=` date in its `<script src>` tag so browsers fetch the new copy.
 - Logo: `Gemini_Generated_Image_wgi2nnwgi2nnwgi2-Photoroom.jpg` (WebP data with transparency, kept under this exact name).
 - Hosted on **GitHub Pages** from the `main` branch. `CNAME` = `zynaps.site`, HTTPS enforced.
 - DNS at Namecheap: four A records to GitHub (185.199.108–111.153) and `www` CNAME to `davidtg08.github.io`.
@@ -24,6 +25,12 @@ Download hub for three apps: **Synapse X**, **Synapse Y** and **SynapseVPN**.
 - Synapse M (maps) was removed on 2026-10-27 at the owner's request; don't bring back the `/maps` app or the Synapse M tab.
 - "Feedback" (floating bottom-right button + footer link) opens a dialog (Good/Bad, message, optional email) that emails `support@zynaps.site` via FormSubmit (`formsubmit.co/ajax/...`). FormSubmit needs a one-time "Activate" click in the first email it sends to that address.
 - "Support" links open a contact menu (Gmail, Outlook, Yahoo, default app, copy address) for `support@zynaps.site`.
+
+## Security
+- `index.html` has a Content-Security-Policy `<meta>`: scripts only from the site itself (`script-src 'self'`), so **never add inline `<script>` blocks or `onclick=` attributes** — put JS in `site.js`.
+- The CSP lists every outside service the page talks to (`connect-src`: api.github.com, formsubmit.co; fonts from Google). If you add a new outside service (API, image host, embed), add its domain to the CSP or the browser will block it. Test locally and check the console for CSP errors before pushing.
+- `.well-known/security.txt` gives `support@zynaps.site` as the security contact; renew its `Expires` date before 2027-11-02.
+- Secret scanning + push protection are on for zynaps-site, SynapseVPN-releases and SynapseX-releases.
 
 ## Design reference
 Styled after dbvault.app: near-black background, Inter font, flat accent buttons, terminal-style cards, uppercase eyebrows, feature group cards.

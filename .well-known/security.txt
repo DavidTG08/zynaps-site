@@ -1,0 +1,4 @@
+Contact: mailto:support@zynaps.site
+Expires: 2027-11-02T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://zynaps.site/.well-known/security.txt
