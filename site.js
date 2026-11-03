@@ -13,7 +13,11 @@
     // file, size and notes are filled in from the newest GitHub release (see below).
     vpn: { name: 'SynapseVPN', file: 'https://github.com/DavidTG08/SynapseVPN-releases/releases/latest', size: 'Windows installer',
            cta: 'One-click VPN, threat protection, breach alerts and a gaming Speed optimizer. Free for Windows 10 / 11 and Android.',
-           notes: 'SynapseVPN — see the latest release notes on GitHub.' }
+           notes: 'SynapseVPN — see the latest release notes on GitHub.' },
+    // file, size and notes are filled in from the newest GitHub release (see below).
+    waves: { name: 'SynapseWAVEs', file: 'https://github.com/DavidTG08/SynapseWAVEs-releases/releases/latest', size: 'Windows installer',
+           cta: 'An Audacity-style audio editor with AudioLab sound, clean mixing and loud exports. Free for Windows 10 / 11.',
+           notes: 'SynapseWAVEs 1.0.0 — audio editor, mixer and 29 effects.' }
   };
 
   // Synapse X: always link the newest installer from GitHub Releases.
@@ -50,6 +54,25 @@
       document.querySelectorAll('.js-vpn-file').forEach(a => a.href = exe.browser_download_url);
       document.querySelectorAll('.js-vpn-version').forEach(el => el.textContent = 'v' + version);
       if (current === 'vpn') {
+        headerBtn.href = exe.browser_download_url;
+        document.querySelectorAll('.cta .js-download').forEach(a => a.href = exe.browser_download_url);
+      }
+    })
+    .catch(() => { /* keep the link to the releases page */ });
+  // SynapseWAVEs: always link the newest installer from GitHub Releases.
+  fetch('https://api.github.com/repos/DavidTG08/SynapseWAVEs-releases/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(release => {
+      const exe = (release.assets || []).find(a => /\.exe$/i.test(a.name));
+      if (!exe) return;
+      const version = String(release.tag_name || '').replace(/^v/, '');
+      APPS.waves.file = exe.browser_download_url;
+      APPS.waves.size = Math.round(exe.size / 1e6) + ' MB';
+      const firstNote = String(release.body || '').split('\n').map(l => l.replace(/^[-*#]\s*/, '').trim()).filter(Boolean)[0];
+      APPS.waves.notes = 'SynapseWAVEs ' + version + (firstNote ? ' — ' + firstNote : '');
+      document.querySelectorAll('.js-waves-file').forEach(a => a.href = exe.browser_download_url);
+      document.querySelectorAll('.js-waves-version').forEach(el => el.textContent = 'v' + version);
+      if (current === 'waves') {
         headerBtn.href = exe.browser_download_url;
         document.querySelectorAll('.cta .js-download').forEach(a => a.href = exe.browser_download_url);
       }
@@ -97,7 +120,7 @@
       if (on) { void p.offsetWidth; p.classList.add('is-entering'); }
     });
 
-    // Switches the color theme (white / orange / purple / blue)
+    // Switches the color theme (white / orange / purple / blue / green)
     document.body.dataset.app = id;
 
     // Header button: "Get the apps" on Main, otherwise downloads the selected app
@@ -119,7 +142,7 @@
     if (current !== null && !opts.keepScroll) window.scrollTo({ top: 0, behavior: 'smooth' });
     current = id;
 
-    // Main tab has a clean URL; apps use #x, #y, #vpn
+    // Main tab has a clean URL; apps use #x, #y, #vpn, #waves
     const url = isHome ? location.pathname + location.search : '#' + id;
     if ((isHome && location.hash) || (!isHome && location.hash !== '#' + id)) history.replaceState(null, '', url);
   }

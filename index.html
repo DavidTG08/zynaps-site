@@ -8,7 +8,7 @@
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.github.com https://formsubmit.co; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
   <title>zynaps.site — Downloads</title>
-  <meta name="description" content="Download Synapse X, Synapse Y and SynapseVPN for Windows and Android." />
+  <meta name="description" content="Download Synapse X, Synapse Y, SynapseVPN and SynapseWAVEs for Windows and Android." />
   <link rel="icon" href="Gemini_Generated_Image_wgi2nnwgi2nnwgi2-Photoroom.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -60,6 +60,11 @@
     body[data-app="vpn"] {
       --accent: #3b82f6; --accent-2: #22d3ee; --accent-hover: #2563eb;
       --accent-soft: rgba(59,130,246,.13); --accent-line: rgba(59,130,246,.38); --glow: rgba(59,130,246,.45);
+    }
+    /* SynapseWAVEs — Green */
+    body[data-app="waves"] {
+      --accent: #3cb54a; --accent-2: #8dc63f; --accent-hover: #2e9e44;
+      --accent-soft: rgba(60,181,74,.13); --accent-line: rgba(60,181,74,.38); --glow: rgba(60,181,74,.45);
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -156,7 +161,7 @@
     .brand-tab[aria-selected="true"]::after { transform: scaleX(1); }
 
     /* Home: app cards, each in its own app color */
-    .apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .apps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
     .app-card {
       position: relative;
       display: flex;
@@ -227,6 +232,7 @@
     .terminal .cx { color: #f97316; }
     .terminal .cy { color: #a855f7; }
     .terminal .cv { color: #3b82f6; }
+    .terminal .cw { color: #3cb54a; }
     body[data-app="home"] .cta { display: none; }
 
     /* App tabs: tagline sits under the app name, a bit smaller */
@@ -856,6 +862,7 @@
         <button class="tab" role="tab" id="tab-x"   aria-controls="panel-x"   aria-selected="false" tabindex="-1" data-app="x">Synapse X</button>
         <button class="tab" role="tab" id="tab-y"   aria-controls="panel-y"   aria-selected="false" tabindex="-1" data-app="y">Synapse Y</button>
         <button class="tab" role="tab" id="tab-vpn" aria-controls="panel-vpn" aria-selected="false" tabindex="-1" data-app="vpn">SynapseVPN</button>
+        <button class="tab" role="tab" id="tab-waves" aria-controls="panel-waves" aria-selected="false" tabindex="-1" data-app="waves">SynapseWAVEs</button>
       </nav>
 
       <div class="header-right">
@@ -876,7 +883,7 @@
         <div class="container">
           <div>
             <h1 class="fade">Every Synapse app.<span class="accent">One place.</span></h1>
-            <p class="lead fade">zynaps.site is the official home of the Synapse family — a crosshair toolkit and game hub, a precision typing trainer and a secure WireGuard VPN. Pick your tool and download it in seconds.</p>
+            <p class="lead fade">zynaps.site is the official home of the Synapse family — a crosshair toolkit and game hub, a precision typing trainer, a secure WireGuard VPN and a clean audio studio. Pick your tool and download it in seconds.</p>
             <div class="hero-actions fade">
               <a class="btn btn-primary btn-lg js-scroll-apps" href="#apps">
                 <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
@@ -901,6 +908,7 @@
   <span class="cx">●</span> Synapse X    <span class="d">crosshairs + cursors </span><span class="cx js-x-version">v2.0.0</span>
   <span class="cy">●</span> Synapse Y    <span class="d">typing analytics     </span><span class="cy">v1.2.0</span>
   <span class="cv">●</span> SynapseVPN   <span class="d">VPN · PC + Android   </span><span class="cv js-vpn-version">v1.8.0</span>
+  <span class="cw">●</span> SynapseWAVEs <span class="d">audio editor + mixer </span><span class="cw js-waves-version">v1.0.0</span>
 
 <span class="p">$</span> zynaps install --all
 <span class="ok">✔ Ready to download</span>
@@ -912,7 +920,7 @@
 
       <div class="strip">
         <div class="container">
-          <span>Synapse X</span><span>Synapse Y</span><span>SynapseVPN</span><span>Free downloads</span><span>Windows 10 / 11</span><span>Android</span>
+          <span>Synapse X</span><span>Synapse Y</span><span>SynapseVPN</span><span>SynapseWAVEs</span><span>Free downloads</span><span>Windows 10 / 11</span><span>Android</span>
         </div>
       </div>
 
@@ -953,6 +961,16 @@
                 <button class="btn btn-app js-goto" type="button" data-target="vpn">Explore SynapseVPN</button>
                 <a class="btn btn-dl js-vpn-apk" href="https://github.com/DavidTG08/SynapseVPN-releases/releases/download/android-v1.0.0/SynapseVPN-Android-1.0.0.apk" aria-label="Download SynapseVPN for Android (APK)" title="Android APK"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></a>
                 <a class="btn btn-dl js-download js-vpn-file" data-app="vpn" href="https://github.com/DavidTG08/SynapseVPN-releases/releases/latest" aria-label="Download SynapseVPN"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
+              </div>
+            </article>
+            <article class="app-card" style="--c:#3cb54a; --c2:#8dc63f; --c3:#2e9e44">
+              <div class="app-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2M6 8v8M10 5v14M14 9v6M18 7v10M22 12h0"/></svg></div>
+              <p class="tag">Audio editor, mixer &amp; effects</p>
+              <h3>SynapseWAVEs</h3>
+              <p>An Audacity-style audio editor with AudioLab sound: 29 effects, clean 32-bit mixing with no compression, and loud MP3 exports for uploads.</p>
+              <div class="row">
+                <button class="btn btn-app js-goto" type="button" data-target="waves">Explore SynapseWAVEs</button>
+                <a class="btn btn-dl js-download js-waves-file" data-app="waves" href="https://github.com/DavidTG08/SynapseWAVEs-releases/releases/latest" aria-label="Download SynapseWAVEs"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg></a>
               </div>
             </article>
           </div>
@@ -1329,6 +1347,127 @@
       </section>
     </div>
 
+    <!-- ═════════ 4. SynapseWAVEs — Green ═════════ -->
+    <div class="panel" id="panel-waves" role="tabpanel" aria-labelledby="tab-waves" hidden>
+      <section class="hero">
+        <div class="container">
+          <div>
+            <h1 class="fade">SynapseWAVEs<span class="accent">Audio Editor, Mixer &amp; Effects Studio</span></h1>
+            <p class="lead fade">SynapseWAVEs is a free audio editor for Windows with the layout of Audacity and the sound of AudioLab. Cut, mix and record, add 29 effects with live preview, and export loud, clean files. Audio stays 32-bit float from import to export, and tracks are mixed without any compression, so every waveform keeps its exact shape.</p>
+            <div class="hero-actions fade">
+              <a class="btn btn-primary btn-lg js-download js-waves-file" data-app="waves" href="https://github.com/DavidTG08/SynapseWAVEs-releases/releases/latest">
+                <svg class="arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v12M6 11l6 6 6-6M5 20h14"/></svg>
+                Download SynapseWAVEs
+              </a>
+              <button class="btn btn-secondary btn-lg js-notes" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></svg>
+                Release notes
+              </button>
+            </div>
+            <div class="badges fade">
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12h2l2-6 3 12 3-9 2 5 2-2h6"/></svg>32-bit float</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21V14M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3"/></svg>No compression</span>
+              <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-dasharray="3 3"/></svg><span class="js-waves-version">v1.0.0</span></span>
+            </div>
+          </div>
+          <div class="terminal fade" aria-hidden="true">
+            <div class="terminal-bar"><i></i><i></i><i></i><small>synapsewaves</small></div>
+<pre><span class="p">$</span> synapsewaves open "my-song.mp3"
+<span class="d">Format ............. </span>MP3 · 44.1 kHz · stereo
+<span class="d">Engine ............. </span>32-bit float
+<span class="d">Mix ................ </span><span class="ok">clean sum · no compression</span>
+
+<span class="p">$</span> synapsewaves fx "Bass and Treble" <span class="d">--bass -17 --treble -10</span>
+<span class="p">$</span> synapsewaves fx "Limiter" <span class="d">--in 3 --out 6</span>
+<span class="ok">● Applied</span>  <span class="d">peak</span> <span class="hl">+15.6 dB kept</span>
+
+<span class="p">$</span> synapsewaves export <span class="d">--mp3 --max 20MB</span>
+<span class="ok">✔ 13.3 MB · 320 kbps · stays loud</span>
+
+<span class="p">$</span> <span class="cursor"></span></pre>
+          </div>
+        </div>
+      </section>
+
+      <div class="strip">
+        <div class="container">
+          <span>Audacity-style editor</span><span>29 effects</span><span>AudioLab sound</span><span>32-bit float</span><span>No compression</span><span>Recorder</span><span>MP3 &amp; WAV</span><span>Free</span>
+        </div>
+      </div>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow">Core features</p>
+            <h2>Edit it. Mix it. Keep it loud.</h2>
+            <p>Everything you know from Audacity, effects that sound like AudioLab, and exports that keep every bit of your mix, in a clean green studio for Windows.</p>
+          </div>
+          <div class="groups">
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2M6 7v10M10 4v16M14 8v8M18 6v12M22 12h0"/></svg></div>
+                <div><span class="group-num">01</span><h3>Audacity-Style Editor</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Feels right at home</h4><p>Menus, toolbars, tracks, meters and shortcuts laid out like Audacity: cut, copy, paste, split, trim, silence, undo and redo.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Selection, Envelope, Draw and Multi tools</h4><p>Shape the volume with envelope points, redraw single samples, drag clips between tracks and zoom right down to the sample.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1"/></svg></div>
+                <div><span class="group-num">02</span><h3>29 Effects</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>The whole Effect menu</h4><p>Amplify, Bass and Treble, Change Pitch / Speed / Tempo, Compressor, Limiter, Echo, Reverb, Graphic and Filter Curve EQ, Noise Reduction, Paulstretch, Wahwah and more.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Preview before you apply</h4><p>Every effect has a preview, presets and a progress window for long jobs. Extras like a voice changer, vocal remover and 8D audio live in Tools.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></svg></div>
+                <div><span class="group-num">03</span><h3>AudioLab Sound</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Same engine as AudioLab</h4><p>Bass and Treble and Limiter run on FFmpeg like AudioLab, tuned against real AudioLab exports so your favourite settings sound the same.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>High-quality pitch and tempo</h4><p>Change pitch without changing speed (and the other way round) with Rubber Band, or slide both over time.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg></div>
+                <div><span class="group-num">04</span><h3>Clean Mixing</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>No compression, ever</h4><p>Tracks are added together sample-for-sample. A loud file mixed with an intro keeps its exact waveform. Nothing is squashed or auto-levelled.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>32-bit float everywhere</h4><p>Files open at their own sample rate and stay 32-bit float, so peaks above 0 dB are kept instead of cut.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v4M8 21h8"/></svg></div>
+                <div><span class="group-num">05</span><h3>Record &amp; Meters</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Clean recording</h4><p>Record your mic in 32-bit float with no echo cancelling or auto-volume, while the rest of the project plays.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Audacity-style meters</h4><p>Recording and playback meters with RMS and peak bars, peak hold and a clip light. Right-click for options.</p></div></li>
+              </ul>
+            </article>
+            <article class="group">
+              <div class="group-head">
+                <div class="group-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15V4.5M8 8.2l4-3.7 4 3.7"/><path d="M5 12.5V19h14v-6.5"/></svg></div>
+                <div><span class="group-num">06</span><h3>Export for Uploads</h3></div>
+              </div>
+              <ul>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Stays loud after uploading</h4><p>MP3 export keeps peaks above 0 dB, so your mix plays as loud in games as it does in the editor.</p></div></li>
+                <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L20 7"/></svg><div><h4>Fits any size limit</h4><p>Set a limit like 20 MB and SynapseWAVEs picks the best MP3 quality that fits. WAV (32-bit, 24-bit, 16-bit) is there for lossless files.</p></div></li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+    </div>
+
     <!-- ───────── Shared CTA (follows the selected app) ───────── -->
     <section class="cta">
       <div class="container">
@@ -1360,6 +1499,7 @@
         <a href="#x">Synapse X</a>
         <a href="#y">Synapse Y</a>
         <a href="#vpn">SynapseVPN</a>
+        <a href="#waves">SynapseWAVEs</a>
         <span class="sep"></span>
         <span class="copy">© <span id="year">2026</span> zynaps.site</span>
       </div>
@@ -1432,6 +1572,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="site.js?v=20261102"></script>
+  <script src="site.js?v=20261103"></script>
 </body>
 </html>
