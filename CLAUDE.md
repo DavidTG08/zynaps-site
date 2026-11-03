@@ -19,7 +19,8 @@ Download hub for four apps: **Synapse X**, **Synapse Y**, **SynapseVPN** and **S
 - Each tab sets `body[data-app]`, which switches the accent color:
   - home = silver (`--silver: #c4c9d1`), x = orange, y = purple, vpn = blue, waves = green (`#3cb54a`, same green as the app).
 - All text uses `--silver` (no pure white). The logo has a subtle rotating multi-color glow (`.logo-wrap::before`).
-- App details (download file, size, release note, CTA text) live in the `APPS` object in the script. The Synapse Y installer file is a placeholder under `downloads/` and doesn't exist yet.
+- App details (download file, size, release note, CTA text) live in the `APPS` object in the script.
+- **Synapse Y downloads are live**: same approach as Synapse X, using the newest release of `DavidTG08/SynapseY-releases` (public, installers only; code is in the private `DavidTG08/synapse-y`). The script updates every `.js-y-file` link and `.js-y-version` label. The app's own auto-updater reads the same releases.
 - **Synapse X downloads are live**: same approach as SynapseVPN, using the newest release of `DavidTG08/SynapseX-releases` (public, installers only; code is in the private `DavidTG08/SynapseX`). The script updates every `.js-x-file` link and `.js-x-version` label. Publishing a new release there is all that's needed.
 - **SynapseVPN downloads are live**: the script asks the GitHub API for the newest release of `DavidTG08/SynapseVPN-releases` (public, installers only; the code repo may be private) and points every `.js-vpn-file` link at its `.exe` (version shown in `.js-vpn-version`). No site change is needed when a new SynapseVPN version is published. Falls back to the releases page.
 - **SynapseWAVEs downloads are live**: same approach, newest release of `DavidTG08/SynapseWAVEs-releases` (public, installers only; code is in the private `DavidTG08/SynapseWAVEs`). The script updates every `.js-waves-file` link and `.js-waves-version` label.

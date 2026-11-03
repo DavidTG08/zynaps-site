@@ -7,9 +7,10 @@
     x:   { name: 'Synapse X',  file: 'https://github.com/DavidTG08/SynapseX-releases/releases/latest',   size: 'Windows installer',
            cta: 'A pixel-perfect crosshair and 1,100+ custom cursors. Free for Windows 10 / 11.',
            notes: 'Synapse X 2.0.0 — 1,100+ editable cursors, Discord sign-in, and a crosshair that works everywhere.' },
-    y:   { name: 'Synapse Y',  file: 'downloads/SynapseY-Setup-1.2.0.exe',   size: '22 MB',
+    // file, size and notes are filled in from the newest GitHub release (see below).
+    y:   { name: 'Synapse Y',  file: 'https://github.com/DavidTG08/SynapseY-releases/releases/latest',   size: 'Windows installer',
            cta: 'Boost your WPM and climb the global leaderboard.',
-           notes: 'Synapse Y 1.2.0 — live WPM tracking, performance history and cloud-synced leaderboards.' },
+           notes: 'Synapse Y 2.0.0 — Monkeytype-style scoring, themes, daily challenge and weak-key practice.' },
     // file, size and notes are filled in from the newest GitHub release (see below).
     vpn: { name: 'SynapseVPN', file: 'https://github.com/DavidTG08/SynapseVPN-releases/releases/latest', size: 'Windows installer',
            cta: 'One-click VPN, threat protection, breach alerts and a gaming Speed optimizer. Free for Windows 10 / 11 and Android.',
@@ -34,6 +35,26 @@
       document.querySelectorAll('.js-x-file').forEach(a => a.href = exe.browser_download_url);
       document.querySelectorAll('.js-x-version').forEach(el => el.textContent = 'v' + version);
       if (current === 'x') {
+        headerBtn.href = exe.browser_download_url;
+        document.querySelectorAll('.cta .js-download').forEach(a => a.href = exe.browser_download_url);
+      }
+    })
+    .catch(() => { /* keep the link to the releases page */ });
+
+  // Synapse Y: always link the newest installer from GitHub Releases.
+  fetch('https://api.github.com/repos/DavidTG08/SynapseY-releases/releases/latest', { headers: { Accept: 'application/vnd.github+json' } })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(release => {
+      const exe = (release.assets || []).find(a => /\.exe$/i.test(a.name));
+      if (!exe) return;
+      const version = String(release.tag_name || '').replace(/^v/, '');
+      APPS.y.file = exe.browser_download_url;
+      APPS.y.size = Math.round(exe.size / 1e6) + ' MB';
+      const firstNote = String(release.body || '').split('\n').map(l => l.replace(/^[-*#]\s*/, '').trim()).filter(Boolean)[0];
+      APPS.y.notes = 'Synapse Y ' + version + (firstNote ? ' — ' + firstNote : '');
+      document.querySelectorAll('.js-y-file').forEach(a => a.href = exe.browser_download_url);
+      document.querySelectorAll('.js-y-version').forEach(el => el.textContent = 'v' + version);
+      if (current === 'y') {
         headerBtn.href = exe.browser_download_url;
         document.querySelectorAll('.cta .js-download').forEach(a => a.href = exe.browser_download_url);
       }
