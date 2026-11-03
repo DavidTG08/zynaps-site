@@ -31,7 +31,7 @@ Download hub for four apps: **Synapse X**, **Synapse Y**, **SynapseVPN** and **S
 - `index.html` has a Content-Security-Policy `<meta>`: scripts only from the site itself (`script-src 'self'`), so **never add inline `<script>` blocks or `onclick=` attributes** — put JS in `site.js`.
 - The CSP lists every outside service the page talks to (`connect-src`: api.github.com, formsubmit.co; fonts from Google). If you add a new outside service (API, image host, embed), add its domain to the CSP or the browser will block it. Test locally and check the console for CSP errors before pushing.
 - `.well-known/security.txt` gives `support@zynaps.site` as the security contact; renew its `Expires` date before 2027-11-02.
-- Secret scanning + push protection are on for zynaps-site, SynapseVPN-releases and SynapseX-releases (not yet checked for SynapseWAVEs-releases).
+- Secret scanning + push protection are on for zynaps-site, SynapseVPN-releases, SynapseX-releases and SynapseWAVEs-releases.
 - DNS at Namecheap also has (keep these — don't delete them): DNSSEC on; CAA `0 issue "letsencrypt.org"` (GitHub Pages certs come from Let's Encrypt); DMARC TXT on `_dmarc`; TXT `_github-pages-challenge-DavidTG08` (keeps zynaps.site verified on GitHub, so nobody else can claim it on GitHub Pages).
 
 ## Design reference
